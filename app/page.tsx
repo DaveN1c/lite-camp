@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import WhyLiteCamp from "@/components/WhyLiteCamp";
+import PhotoBanner from "@/components/PhotoBanner";
 import Pricing from "@/components/Pricing";
 import Program from "@/components/Program";
 import Location from "@/components/Location";
@@ -16,6 +17,7 @@ export default function Home() {
       <main>
         <Hero />
         <WhyLiteCamp />
+        <PhotoBanner />
         <Pricing />
         <Program />
         <Location />

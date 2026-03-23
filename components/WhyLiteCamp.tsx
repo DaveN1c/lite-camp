@@ -74,9 +74,14 @@ export default function WhyLiteCamp() {
             Proč LITE camp?
           </p>
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-end">
-            <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
-              Tábor, který dá víc než jen prázdniny. <br /> Děti se vrátí s lepší angličtinou a nezapomenutelnými zážitky.
-            </h2>
+            <div>
+              <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
+                Tábor, který dá víc než jen prázdniny.
+              </h2>
+              <p className="mt-4 text-lg text-gray-500 font-medium">
+                Děti se vrátí s lepší angličtinou a nezapomenutelnými zážitky.
+              </p>
+            </div>
             <p className="text-gray-400 text-base leading-relaxed max-w-md">
               Spojujeme táborové prázdniny s intenzivní výukou angličtiny, která bude dál bavit a zároveň si užijí léto naplno!
             </p>

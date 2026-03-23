@@ -19,38 +19,36 @@ function MailIcon() {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#06100f] border-t border-white/5">
+    <footer className="bg-[#ccfbf1] border-t border-teal-200">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
         <div className="grid md:grid-cols-3 gap-8 items-start">
-          {/* Logo */}
           <div className="flex items-center gap-3">
             <Logo size={36} />
             <div>
-              <p className="text-white font-black text-sm">LITE camp 2026</p>
-              <p className="text-white/30 text-xs">LITE camp, o.p.s. · Chrudim</p>
-              <p className="text-white/20 text-[10px] mt-0.5">Organizátor: LITE®, o.p.s.</p>
+              <p className="text-[#0f172a] font-black text-sm">LITE camp 2026</p>
+              <p className="text-gray-500 text-xs">LITE camp, o.p.s. · Chrudim</p>
+              <p className="text-gray-400 text-[10px] mt-0.5">Organizátor: LITE®, o.p.s.</p>
             </div>
           </div>
 
-          {/* Contact */}
-          <div className="flex flex-col sm:flex-row md:justify-center gap-1 text-xs text-white/30">
-            <a href="tel:+420774650545" className="hover:text-white/70 transition-colors">
+          <div className="flex flex-col sm:flex-row md:justify-center gap-1 text-xs text-gray-500">
+            <a href="tel:+420774650545" className="hover:text-[#14b8a6] transition-colors">
               <PhoneIcon />774 650 545
             </a>
-            <span className="hidden sm:inline mx-2">·</span>
-            <a href="tel:+420739611714" className="hover:text-white/70 transition-colors">
+            <span className="hidden sm:inline mx-2 text-gray-300">·</span>
+            <a href="tel:+420739611714" className="hover:text-[#14b8a6] transition-colors">
               <PhoneIcon />739 611 714
             </a>
-            <span className="hidden sm:inline mx-2">·</span>
-            <a href="mailto:hk@lite.cz" className="hover:text-white/70 transition-colors">
+            <span className="hidden sm:inline mx-2 text-gray-300">·</span>
+            <a href="mailto:hk@lite.cz" className="hover:text-[#14b8a6] transition-colors">
               <MailIcon />hk@lite.cz
             </a>
           </div>
 
-          {/* Address */}
-          <div className="text-xs text-white/20 md:text-right space-y-1">
+          <div className="text-xs text-gray-400 md:text-right space-y-1">
             <p>Čáslavská 1162, 537 01 Chrudim</p>
             <p>© {new Date().getFullYear()} LITE camp, o.p.s.</p>
+            <a href="https://inetio.cz" target="_blank" rel="noopener noreferrer" className="hover:text-[#14b8a6] transition-colors">Vytvořilo inetio s.r.o.</a>
           </div>
         </div>
       </div>

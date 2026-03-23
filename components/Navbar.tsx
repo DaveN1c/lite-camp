@@ -12,26 +12,25 @@ export default function Navbar() {
     { href: "#program", label: "Program" },
     { href: "#location", label: "Místo" },
     { href: "#parents", label: "Pro rodiče" },
+    { href: "#reviews", label: "Reference" },
   ];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a2e2c]/95 backdrop-blur-sm border-b border-white/10">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-teal-100">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between h-16">
-        {/* Logo */}
         <a href="#" className="flex items-center gap-2.5 group">
           <Logo size={34} />
-          <span className="text-[#f5a623] text-[10px] font-bold uppercase tracking-widest">
+          <span className="text-[#14b8a6] text-[10px] font-bold uppercase tracking-widest">
             2026
           </span>
         </a>
 
-        {/* Desktop nav */}
         <div className="hidden md:flex items-center gap-7">
           {links.map((l) => (
             <a
               key={l.href}
               href={l.href}
-              className="text-white/50 hover:text-white text-xs font-bold uppercase tracking-[0.12em] transition-colors"
+              className="text-gray-500 hover:text-[#14b8a6] text-xs font-bold uppercase tracking-[0.12em] transition-colors"
             >
               {l.label}
             </a>
@@ -41,21 +40,20 @@ export default function Navbar() {
         <div className="hidden md:flex items-center gap-5">
           <a
             href="tel:+420774650545"
-            className="text-white/40 hover:text-white/80 text-xs transition-colors"
+            className="text-gray-400 hover:text-[#14b8a6] text-xs transition-colors"
           >
             774 650 545
           </a>
           <a
             href="#contact"
-            className="px-4 py-2.5 bg-[#f5a623] text-[#111] font-black text-xs uppercase tracking-wider hover:opacity-80 transition-opacity"
+            className="px-4 py-2.5 bg-[#fbbf24] text-[#111] font-black text-xs uppercase tracking-wider hover:bg-[#f59e0b] transition-colors"
           >
             Přihlásit dítě →
           </a>
         </div>
 
-        {/* Mobile burger */}
         <button
-          className="md:hidden text-white p-1"
+          className="md:hidden text-gray-600 p-1"
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Menu"
         >
@@ -68,25 +66,24 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* Mobile menu */}
       {menuOpen && (
-        <div className="md:hidden bg-[#0a2e2c] border-t border-white/10">
+        <div className="md:hidden bg-white border-t border-teal-100">
           <div className="px-6 py-2">
             {links.map((l) => (
               <a
                 key={l.href}
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
-                className="flex items-center justify-between py-3.5 text-white/70 hover:text-white text-sm font-semibold border-b border-white/10 last:border-0 transition-colors"
+                className="flex items-center justify-between py-3.5 text-gray-600 hover:text-[#14b8a6] text-sm font-semibold border-b border-gray-100 last:border-0 transition-colors"
               >
                 {l.label}
-                <span className="text-white/30 text-xs">→</span>
+                <span className="text-gray-300 text-xs">→</span>
               </a>
             ))}
             <a
               href="#contact"
               onClick={() => setMenuOpen(false)}
-              className="block mt-4 mb-2 py-3.5 bg-[#f5a623] text-[#111] font-black text-sm text-center uppercase tracking-wider hover:opacity-90 transition-opacity"
+              className="block mt-4 mb-2 py-3.5 bg-[#fbbf24] text-[#111] font-black text-sm text-center uppercase tracking-wider hover:bg-[#f59e0b] transition-colors"
             >
               Přihlásit dítě →
             </a>

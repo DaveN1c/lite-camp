@@ -11,7 +11,7 @@ const TERMS = [
 ];
 
 const inputCls =
-  "w-full px-4 py-3 border border-gray-300 bg-white text-[#111] text-sm placeholder-gray-400 focus:outline-none focus:border-[#0a2e2c] transition-colors";
+  "w-full px-4 py-3 border border-teal-200 bg-white text-[#111] text-sm placeholder-gray-400 focus:outline-none focus:border-[#14b8a6] focus:ring-1 focus:ring-[#14b8a6]/20 transition-colors rounded-md";
 
 function PhoneIcon() {
   return (
@@ -32,7 +32,7 @@ function MailIcon() {
 
 function CheckCircle() {
   return (
-    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#0a2e2c" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mb-6">
+    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#14b8a6" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="mb-6">
       <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
       <polyline points="22 4 12 14.01 9 11.01" />
     </svg>
@@ -65,7 +65,7 @@ export default function ContactForm() {
   }
 
   return (
-    <section id="contact" className="bg-[#0a2e2c]">
+    <section id="contact" className="bg-[#f0fdf9]">
       {/* Header */}
       <div className="max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-16">
         <motion.div
@@ -74,14 +74,14 @@ export default function ContactForm() {
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <p className="text-[#f5a623] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">
-            <span className="w-8 h-px bg-[#f5a623] inline-block" />
+          <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">
+            <span className="w-8 h-px bg-[#14b8a6] inline-block" />
             Přihláška
           </p>
-          <h2 className="text-4xl md:text-6xl font-black text-white leading-tight">
+          <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
             Přihlaste dítě<br />ještě dnes.
           </h2>
-          <p className="text-white/40 text-sm mt-4">
+          <p className="text-gray-500 text-sm mt-4">
             Místa jsou omezená — nenechte to na poslední chvíli.
           </p>
         </motion.div>
@@ -93,13 +93,12 @@ export default function ContactForm() {
           initial={{ opacity: 0, y: 16 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid lg:grid-cols-5 border border-white/10 overflow-hidden"
+          className="grid lg:grid-cols-5 rounded-2xl overflow-hidden shadow-sm shadow-teal-100 border border-teal-200"
         >
           {/* Left – info */}
-          <div className="lg:col-span-2 p-8 md:p-10 border-b border-white/10 lg:border-b-0 lg:border-r border-white/10 space-y-10">
-            {/* Contact */}
+          <div className="lg:col-span-2 p-8 md:p-10 bg-white border-b border-teal-100 lg:border-b-0 lg:border-r border-teal-100 space-y-10">
             <div>
-              <p className="text-[#f5a623] text-xs font-bold uppercase tracking-[0.2em] mb-5">
+              <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.2em] mb-5">
                 Kontakt
               </p>
               <div className="space-y-3">
@@ -111,7 +110,7 @@ export default function ContactForm() {
                   <a
                     key={c.label}
                     href={c.href}
-                    className="flex items-center justify-between text-white/60 hover:text-white text-sm font-medium transition-colors border-b border-white/10 pb-3 last:border-0"
+                    className="flex items-center justify-between text-gray-500 hover:text-[#14b8a6] text-sm font-medium transition-colors border-b border-gray-100 pb-3 last:border-0"
                   >
                     <span className="flex items-center gap-2">
                       <span className="opacity-50">
@@ -119,15 +118,14 @@ export default function ContactForm() {
                       </span>
                       {c.label}
                     </span>
-                    <span className="text-white/20 text-xs">→</span>
+                    <span className="text-gray-300 text-xs">→</span>
                   </a>
                 ))}
               </div>
             </div>
 
-            {/* Terms */}
             <div>
-              <p className="text-[#f5a623] text-xs font-bold uppercase tracking-[0.2em] mb-5">
+              <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.2em] mb-5">
                 Termíny 2026
               </p>
               <div className="space-y-3">
@@ -136,22 +134,18 @@ export default function ContactForm() {
                   { name: "1. týden", date: "18. 7. – 25. 7.", price: "8 900 Kč" },
                   { name: "2. týden", date: "25. 7. – 1. 8.", price: "8 900 Kč" },
                 ].map((t) => (
-                  <div
-                    key={t.name}
-                    className="flex items-center justify-between border-b border-white/10 pb-3 last:border-0"
-                  >
+                  <div key={t.name} className="flex items-center justify-between border-b border-gray-100 pb-3 last:border-0">
                     <div>
-                      <p className="text-white/80 text-sm font-semibold">{t.name}</p>
-                      <p className="text-white/30 text-xs">{t.date}</p>
+                      <p className="text-gray-700 text-sm font-semibold">{t.name}</p>
+                      <p className="text-gray-400 text-xs">{t.date}</p>
                     </div>
-                    <span className="text-[#f5a623] font-black text-sm">{t.price}</span>
+                    <span className="text-[#14b8a6] font-black text-sm">{t.price}</span>
                   </div>
                 ))}
               </div>
             </div>
 
-            {/* Note */}
-            <p className="text-white/25 text-xs leading-relaxed">
+            <p className="text-gray-400 text-xs leading-relaxed">
               LITE camp, o.p.s.<br />
               Čáslavská 1162, 537 01 Chrudim
             </p>
@@ -162,7 +156,7 @@ export default function ContactForm() {
             {status === "success" ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
                 <CheckCircle />
-                <h3 className="text-2xl font-black text-[#111] mb-2">
+                <h3 className="text-2xl font-black text-[#0f172a] mb-2">
                   Přihláška odeslána!
                 </h3>
                 <p className="text-gray-500 text-sm leading-relaxed max-w-sm">
@@ -178,102 +172,49 @@ export default function ContactForm() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">
-                      Jméno rodiče *
-                    </label>
-                    <input
-                      name="parentName"
-                      type="text"
-                      required
-                      placeholder="Jana Nováková"
-                      className={inputCls}
-                    />
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Jméno rodiče *</label>
+                    <input name="parentName" type="text" required placeholder="Jana Nováková" className={inputCls} />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">
-                      Email *
-                    </label>
-                    <input
-                      name="email"
-                      type="email"
-                      required
-                      placeholder="jana@email.cz"
-                      className={inputCls}
-                    />
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Email *</label>
+                    <input name="email" type="email" required placeholder="jana@email.cz" className={inputCls} />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">
-                      Telefon *
-                    </label>
-                    <input
-                      name="phone"
-                      type="tel"
-                      required
-                      placeholder="+420 123 456 789"
-                      className={inputCls}
-                    />
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Telefon *</label>
+                    <input name="phone" type="tel" required placeholder="+420 123 456 789" className={inputCls} />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">
-                      Jméno dítěte *
-                    </label>
-                    <input
-                      name="childName"
-                      type="text"
-                      required
-                      placeholder="Tomáš Novák"
-                      className={inputCls}
-                    />
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Jméno dítěte *</label>
+                    <input name="childName" type="text" required placeholder="Tomáš Novák" className={inputCls} />
                   </div>
                 </div>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">
-                      Věk dítěte *
-                    </label>
-                    <input
-                      name="childAge"
-                      type="number"
-                      required
-                      min={7}
-                      max={17}
-                      placeholder="10"
-                      className={inputCls}
-                    />
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Věk dítěte *</label>
+                    <input name="childAge" type="number" required min={7} max={17} placeholder="10" className={inputCls} />
                   </div>
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">
-                      Termín *
-                    </label>
+                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Termín *</label>
                     <select name="term" required className={inputCls}>
                       <option value="">Vyberte termín…</option>
                       {TERMS.map((t) => (
-                        <option key={t.value} value={t.value}>
-                          {t.label}
-                        </option>
+                        <option key={t.value} value={t.value}>{t.label}</option>
                       ))}
                     </select>
                   </div>
                 </div>
 
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">
-                    Zpráva / poznámka
-                  </label>
-                  <textarea
-                    name="message"
-                    rows={3}
-                    placeholder="Speciální stravovací požadavky, dotazy ohledně alergie…"
-                    className={`${inputCls} resize-none`}
-                  />
+                  <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Zpráva / poznámka</label>
+                  <textarea name="message" rows={3} placeholder="Speciální stravovací požadavky, dotazy ohledně alergie…" className={`${inputCls} resize-none`} />
                 </div>
 
                 {status === "error" && (
-                  <p className="text-red-600 text-sm border border-red-200 bg-red-50 px-4 py-3 rounded-sm">
+                  <p className="text-red-600 text-sm border border-red-200 bg-red-50 px-4 py-3 rounded-md">
                     {errorMsg}
                   </p>
                 )}
@@ -281,7 +222,7 @@ export default function ContactForm() {
                 <button
                   type="submit"
                   disabled={status === "loading"}
-                  className="w-full py-4 bg-[#f5a623] disabled:opacity-60 text-[#111] font-black text-sm uppercase tracking-wider hover:opacity-80 transition-opacity"
+                  className="w-full py-4 bg-[#fbbf24] disabled:opacity-60 text-[#111] font-black text-sm uppercase tracking-wider hover:bg-[#f59e0b] transition-colors rounded-lg"
                 >
                   {status === "loading" ? "Odesílám…" : "Odeslat přihlášku →"}
                 </button>

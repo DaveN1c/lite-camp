@@ -17,17 +17,15 @@ export default function PhotoBanner() {
         style={{ objectFit: "cover", objectPosition: "center 40%" }}
         sizes="100vw"
       />
-      {/* Dark overlay */}
-      <div className="absolute inset-0 bg-[#0a2e2c]/65" />
+      <div className="absolute inset-0 bg-[#14b8a6]/60" />
 
-      {/* Content */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.7 }}
         className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6"
       >
-        <p className="text-[#f5a623] text-xs font-bold uppercase tracking-[0.35em] mb-4">
+        <p className="text-white/70 text-xs font-bold uppercase tracking-[0.35em] mb-4">
           LITE camp 2026
         </p>
         <p
@@ -36,12 +34,12 @@ export default function PhotoBanner() {
         >
           Místa jsou omezená.
         </p>
-        <p className="text-white/55 text-sm md:text-base mt-3 mb-8 max-w-md">
+        <p className="text-white/70 text-sm md:text-base mt-3 mb-8 max-w-md">
           Přihlaste dítě co nejdříve — kapacita tábora je limitovaná.
         </p>
         <a
           href="#contact"
-          className="px-8 py-3.5 bg-[#f5a623] text-[#111] font-black uppercase tracking-wider text-sm hover:opacity-90 transition-opacity"
+          className="px-8 py-3.5 bg-[#fbbf24] text-[#111] font-black uppercase tracking-wider text-sm hover:bg-[#f59e0b] transition-colors"
         >
           Přihlásit dítě →
         </a>

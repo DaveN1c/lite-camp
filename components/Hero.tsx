@@ -7,8 +7,10 @@ import Image from "next/image";
 const SLIDES = [
   { src: "/fotky/group-photo.jpg", caption: "Celý tábor pohromadě — léto 2025" },
   { src: "/fotky/water-fight.jpg", caption: "Odpolední hry a zábava" },
+  { src: "/fotky/river-panorama.jpg", caption: "Koupání na Sázavě každý den" },
   { src: "/fotky/outdoor-lesson.jpg", caption: "Angličtina pod širým nebem" },
   { src: "/fotky/football.jpg", caption: "Sport a pohyb každý den" },
+  { src: "/fotky/campfire.jpg", caption: "Táborák a večerní program" },
 ];
 
 export default function Hero() {
@@ -25,9 +27,8 @@ export default function Hero() {
   const next = () => setCurrent((c) => (c + 1) % SLIDES.length);
 
   return (
-    <section className="bg-[#061e1e] min-h-screen flex flex-col pt-16">
+    <section className="bg-[#f0fdf9] min-h-screen flex flex-col pt-16">
 
-      {/* Main content */}
       <div className="flex-1 max-w-7xl mx-auto w-full px-6 lg:px-12 py-16 lg:py-24 flex flex-col justify-center">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
@@ -37,41 +38,40 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <p className="text-[#f5a623] text-xs font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
-              <span className="w-8 h-px bg-[#f5a623] inline-block" />
-              Letní tábor angličtiny 2026
+            <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
+              <span className="w-8 h-px bg-[#14b8a6] inline-block" />
+              Letní tábor s angličtinou 2026
             </p>
 
             <h1
-              className="font-black text-white leading-[0.9] tracking-tight mb-10"
+              className="font-black text-[#0f172a] leading-[0.9] tracking-tight mb-10"
               style={{ fontSize: "clamp(3.2rem, 7.5vw, 7.5rem)" }}
             >
               Léto plné<br />
               zážitků.<br />
-              <span className="text-[#f5a623]">Angličtina</span><br />
+              <span className="text-[#14b8a6]">Angličtina</span><br />
               na celý život.
             </h1>
 
-            <p className="text-white/50 text-base leading-relaxed max-w-md mb-5">
+            <p className="text-gray-500 text-base leading-relaxed max-w-md mb-5">
               Dva týdny na ostrově na řece Sázavě — koupání, kamarádi
-              a výuka angličtiny přirozenou formou. Vaše dítě se vrátí
-              jiné. Lepší jiné.
+              a výuka angličtiny přirozenou formou. Vaše dítě se vrátí nadšené.
             </p>
 
-            <p className="text-white/25 text-sm mb-12">
+            <p className="text-gray-400 text-sm mb-12">
               Pro děti od 7 do 17 let &nbsp;·&nbsp; 18. července – 1. srpna 2026
             </p>
 
             <div className="flex flex-wrap gap-4">
               <a
                 href="#contact"
-                className="px-8 py-4 bg-[#f5a623] text-[#111] font-black uppercase tracking-wider text-sm hover:opacity-90 transition-opacity inline-flex items-center gap-2"
+                className="px-8 py-4 bg-[#fbbf24] text-[#111] font-black uppercase tracking-wider text-sm hover:bg-[#f59e0b] transition-colors inline-flex items-center gap-2"
               >
                 Přihlásit dítě →
               </a>
               <a
                 href="#pricing"
-                className="px-8 py-4 border border-white/20 text-white font-semibold text-sm hover:border-white/45 hover:bg-white/5 transition-all"
+                className="px-8 py-4 border-2 border-[#14b8a6]/30 text-[#14b8a6] font-bold text-sm hover:border-[#14b8a6] hover:bg-[#14b8a6]/5 transition-all"
               >
                 Termíny a ceny
               </a>
@@ -85,8 +85,7 @@ export default function Hero() {
             transition={{ duration: 0.7, delay: 0.2 }}
             className="hidden lg:block"
           >
-            <div className="relative" style={{ aspectRatio: "4/3" }}>
-              {/* Slides */}
+            <div className="relative rounded-2xl overflow-hidden shadow-xl shadow-teal-100" style={{ aspectRatio: "4/3" }}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current}
@@ -104,14 +103,13 @@ export default function Hero() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                     priority={current === 0}
                   />
-                  {/* Overlay gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
                 </motion.div>
               </AnimatePresence>
 
               {/* Caption + dots */}
               <div className="absolute bottom-0 left-0 right-0 px-6 py-5 flex items-end justify-between gap-4 z-10">
-                <p className="text-white/70 text-[11px] font-mono tracking-wider">
+                <p className="text-white/80 text-[11px] font-mono tracking-wider">
                   {SLIDES[current].caption}
                 </p>
                 <div className="flex gap-1.5 flex-shrink-0 items-center">
@@ -119,36 +117,34 @@ export default function Hero() {
                     <button
                       key={i}
                       onClick={() => setCurrent(i)}
-                      className={`h-1 rounded-full transition-all duration-300 ${
-                        i === current ? "bg-[#f5a623] w-5" : "bg-white/40 hover:bg-white/60 w-1"
+                      className={`h-1.5 rounded-full transition-all duration-300 ${
+                        i === current ? "bg-[#fbbf24] w-6" : "bg-white/50 hover:bg-white/70 w-1.5"
                       }`}
                     />
                   ))}
                 </div>
               </div>
 
-              {/* Arrows */}
               <button
                 onClick={prev}
-                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-black/30 hover:bg-black/55 transition-colors text-white/70 hover:text-white z-10"
+                className="absolute left-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white z-10 rounded-full"
               >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="15 18 9 12 15 6" />
                 </svg>
               </button>
               <button
                 onClick={next}
-                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-black/30 hover:bg-black/55 transition-colors text-white/70 hover:text-white z-10"
+                className="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center bg-white/20 hover:bg-white/40 backdrop-blur-sm transition-colors text-white z-10 rounded-full"
               >
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <polyline points="9 18 15 12 9 6" />
                 </svg>
               </button>
 
-              {/* Year badge */}
               <div className="absolute top-5 right-5 z-10">
-                <span className="bg-[#f5a623] text-[#111] text-[10px] font-black uppercase tracking-widest px-3 py-1.5">
-                  Léto 2025
+                <span className="bg-[#fbbf24] text-[#111] text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-sm">
+                  Léto 2026
                 </span>
               </div>
             </div>
@@ -158,9 +154,9 @@ export default function Hero() {
       </div>
 
       {/* Stats bar */}
-      <div className="border-t border-white/10">
+      <div className="bg-white border-t border-teal-100">
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10">
+          <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-teal-100">
             {[
               {
                 value: "13 000 Kč", label: "Celý tábor (2 týdny)",
@@ -195,12 +191,12 @@ export default function Hero() {
                 ),
               },
             ].map((stat) => (
-              <div key={stat.label} className="py-8 px-6 first:pl-0">
-                <div className="text-white/25 mb-2.5">{stat.icon}</div>
-                <div className="text-white font-black text-xl md:text-2xl mb-1">
+              <div key={stat.label} className="py-7 px-6 first:pl-0">
+                <div className="text-[#14b8a6]/50 mb-2">{stat.icon}</div>
+                <div className="text-[#0f172a] font-black text-xl md:text-2xl mb-1">
                   {stat.value}
                 </div>
-                <div className="text-white/35 text-xs uppercase tracking-wider">
+                <div className="text-gray-400 text-xs uppercase tracking-wider">
                   {stat.label}
                 </div>
               </div>

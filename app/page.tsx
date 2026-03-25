@@ -7,6 +7,7 @@ import Program from "@/components/Program";
 import Location from "@/components/Location";
 import Included from "@/components/Included";
 import ForParents from "@/components/ForParents";
+import Gallery from "@/components/Gallery";
 import Reviews from "@/components/Reviews";
 import TesimeSe from "@/components/TesimeSe";
 import ContactForm from "@/components/ContactForm";
@@ -25,6 +26,7 @@ export default function Home() {
         <Location />
         <Included />
         <ForParents />
+        <Gallery />
         <Reviews />
         <TesimeSe />
         <ContactForm />

@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import Marquee from "@/components/Marquee";
 import WhyLiteCamp from "@/components/WhyLiteCamp";
 import PhotoBanner from "@/components/PhotoBanner";
 import Pricing from "@/components/Pricing";
@@ -19,6 +20,7 @@ export default function Home() {
       <Navbar />
       <main>
         <Hero />
+        <Marquee />
         <WhyLiteCamp />
         <PhotoBanner />
         <Pricing />

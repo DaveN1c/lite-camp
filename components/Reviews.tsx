@@ -84,7 +84,9 @@ export default function Reviews() {
               initial={{ opacity: 0, y: 16 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.45, delay: 0.06 * i }}
-              className="break-inside-avoid bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md transition-shadow"
+              whileHover={{ y: -5, scale: 1.02, rotate: i % 2 === 0 ? 0.6 : -0.6 }}
+              whileTap={{ scale: 0.98 }}
+              className="break-inside-avoid bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition-shadow cursor-default"
             >
               <div className="flex items-start gap-3 mb-4">
                 {/* Avatar circle */}

@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import CountUp from "@/components/CountUp";
 
 const SLIDES = [
   { src: "/fotky/group-photo.jpg", caption: "Celý tábor pohromadě — léto 2025" },
@@ -11,6 +12,33 @@ const SLIDES = [
   { src: "/fotky/outdoor-lesson.jpg", caption: "Angličtina pod širým nebem" },
   { src: "/fotky/football.jpg", caption: "Sport a pohyb každý den" },
   { src: "/fotky/campfire.jpg", caption: "Táborák a večerní program" },
+];
+
+// Floating decorative shapes — deterministic positions to avoid hydration mismatch
+const HEADLINE_LINES = [
+  { text: "Léto plné", teal: false },
+  { text: "zážitků.", teal: false },
+  { text: "Angličtina", teal: true },
+  { text: "na celý život.", teal: false },
+];
+
+const containerVariants = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.13, delayChildren: 0.05 } },
+};
+const lineVariants = {
+  hidden: { opacity: 0, y: 36 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.65, ease: "easeOut" as const } },
+};
+
+const FLOATERS = [
+  { top: "18%", left: "4%",  size: 10, color: "#14b8a6", opacity: 0.18, delay: 0,   duration: 4.2 },
+  { top: "62%", left: "6%",  size: 7,  color: "#fbbf24", opacity: 0.22, delay: 1.1, duration: 5.6 },
+  { top: "38%", left: "2%",  size: 5,  color: "#14b8a6", opacity: 0.14, delay: 0.6, duration: 3.8 },
+  { top: "80%", left: "9%",  size: 8,  color: "#fbbf24", opacity: 0.16, delay: 1.8, duration: 4.9 },
+  { top: "12%", right: "5%", size: 9,  color: "#fbbf24", opacity: 0.18, delay: 0.3, duration: 5.1 },
+  { top: "55%", right: "3%", size: 6,  color: "#14b8a6", opacity: 0.15, delay: 2,   duration: 4.4 },
+  { top: "75%", right: "7%", size: 11, color: "#14b8a6", opacity: 0.12, delay: 0.8, duration: 6   },
 ];
 
 export default function Hero() {
@@ -27,31 +55,59 @@ export default function Hero() {
   const next = () => setCurrent((c) => (c + 1) % SLIDES.length);
 
   return (
-    <section className="bg-[#f0fdf9] min-h-screen flex flex-col pt-16">
+    <section className="bg-[#f0fdf9] min-h-screen flex flex-col pt-16 relative overflow-hidden">
+
+      {/* Floating decorative shapes */}
+      {FLOATERS.map((f, i) => (
+        <motion.div
+          key={i}
+          className="absolute rounded-full pointer-events-none select-none hidden lg:block"
+          style={{
+            top: f.top,
+            left: "left" in f ? f.left : undefined,
+            right: "right" in f ? f.right : undefined,
+            width: f.size,
+            height: f.size,
+            backgroundColor: f.color,
+            opacity: f.opacity,
+          }}
+          animate={{ y: [0, -14, 0] }}
+          transition={{
+            duration: f.duration,
+            delay: f.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
 
       <div className="flex-1 max-w-7xl mx-auto w-full px-6 lg:px-12 py-16 lg:py-24 flex flex-col justify-center">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 
           {/* Left — copy */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3">
               <span className="w-8 h-px bg-[#14b8a6] inline-block" />
               Letní tábor s angličtinou 2026
             </p>
 
-            <h1
-              className="font-black text-[#0f172a] leading-[0.9] tracking-tight mb-10"
+            <motion.h1
+              className="font-black text-[#0f172a] leading-[0.9] tracking-tight mb-10 overflow-hidden"
               style={{ fontSize: "clamp(3.2rem, 7.5vw, 7.5rem)" }}
+              variants={containerVariants}
+              initial="hidden"
+              animate="show"
             >
-              Léto plné<br />
-              zážitků.<br />
-              <span className="text-[#14b8a6]">Angličtina</span><br />
-              na celý život.
-            </h1>
+              {HEADLINE_LINES.map((line) => (
+                <motion.span
+                  key={line.text}
+                  variants={lineVariants}
+                  className={`block ${line.teal ? "text-[#14b8a6]" : ""}`}
+                >
+                  {line.text}
+                </motion.span>
+              ))}
+            </motion.h1>
 
             <p className="text-gray-500 text-base leading-relaxed max-w-md mb-5">
               Dva týdny na ostrově na řece Sázavě — koupání, kamarádi
@@ -63,20 +119,26 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-wrap gap-4">
-              <a
+              <motion.a
                 href="#contact"
-                className="px-8 py-4 bg-[#fbbf24] text-[#111] font-black uppercase tracking-wider text-sm hover:bg-[#f59e0b] transition-colors inline-flex items-center gap-2"
+                className="px-8 py-4 bg-[#fbbf24] text-[#111] font-black uppercase tracking-wider text-sm inline-flex items-center gap-2"
+                whileHover={{ scale: 1.04, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 Přihlásit dítě →
-              </a>
-              <a
+              </motion.a>
+              <motion.a
                 href="#pricing"
                 className="px-8 py-4 border-2 border-[#14b8a6]/30 text-[#14b8a6] font-bold text-sm hover:border-[#14b8a6] hover:bg-[#14b8a6]/5 transition-all"
+                whileHover={{ scale: 1.03, y: -1 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
               >
                 Termíny a ceny
-              </a>
+              </motion.a>
             </div>
-          </motion.div>
+          </div>
 
           {/* Right — image slider */}
           <motion.div
@@ -159,7 +221,8 @@ export default function Hero() {
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-teal-100">
             {[
               {
-                value: "13 000 Kč", label: "Celý tábor (2 týdny)",
+                label: "Celý tábor (2 týdny)",
+                content: <CountUp to={13000} suffix=" Kč" />,
                 icon: (
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="3" y="4" width="18" height="18" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
@@ -167,7 +230,8 @@ export default function Hero() {
                 ),
               },
               {
-                value: "8 900 Kč", label: "Jeden týden",
+                label: "Jeden týden",
+                content: <CountUp to={8900} suffix=" Kč" duration={1600} />,
                 icon: (
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" /><line x1="7" y1="7" x2="7.01" y2="7" />
@@ -175,7 +239,8 @@ export default function Hero() {
                 ),
               },
               {
-                value: "8 000 Kč", label: "Kurz angličtiny v ceně",
+                label: "Kurz angličtiny v ceně",
+                content: <CountUp to={8000} suffix=" Kč" duration={1500} />,
                 icon: (
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" /><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
@@ -183,7 +248,8 @@ export default function Hero() {
                 ),
               },
               {
-                value: "7–17 let", label: "Věk dětí",
+                label: "Věk dětí",
+                content: <span>7–17 let</span>,
                 icon: (
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" />
@@ -194,7 +260,7 @@ export default function Hero() {
               <div key={stat.label} className="py-7 px-6 first:pl-0">
                 <div className="text-[#14b8a6]/50 mb-2">{stat.icon}</div>
                 <div className="text-[#0f172a] font-black text-xl md:text-2xl mb-1">
-                  {stat.value}
+                  {stat.content}
                 </div>
                 <div className="text-gray-400 text-xs uppercase tracking-wider">
                   {stat.label}

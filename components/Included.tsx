@@ -2,11 +2,12 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import CountUp from "@/components/CountUp";
 
-const included = [
+const included: React.ReactNode[] = [
   "Ubytování v jednoduchých chatkách (toalety a sprchy v samostatné budově)",
   "Strava 5× denně + celodenní pitný režim",
-  "Intenzivní kurz angličtiny (hodnota 8 000 Kč)",
+  <>Intenzivní kurz angličtiny (hodnota <CountUp to={8000} suffix=" Kč" duration={1500} />)</>,
   "Táborový program",
   "Péče kvalifikovaným zdravotníkem a táborovými vedoucími",
   "Úrazové pojištění",
@@ -72,8 +73,8 @@ export default function Included() {
               Cena zahrnuje
             </p>
             <ul className="space-y-4">
-              {included.map((text) => (
-                <li key={text} className="flex items-start gap-3">
+              {included.map((text, i) => (
+                <li key={i} className="flex items-start gap-3">
                   <CheckIcon />
                   <span className="text-white/90 text-base leading-relaxed">{text}</span>
                 </li>

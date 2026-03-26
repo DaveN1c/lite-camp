@@ -1,14 +1,15 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useMotionValue, useTransform, useSpring } from "framer-motion";
 import { useRef } from "react";
+import CountUp from "@/components/CountUp";
 
 const plans = [
   {
     name: "1. týden",
     dates: "18. 7. – 25. 7. 2026",
     duration: "7 dní",
-    price: "8 900",
+    price: 8900,
     highlight: false,
     perks: [
       "Ubytování v chatkách",
@@ -22,7 +23,7 @@ const plans = [
     name: "Celý tábor",
     dates: "18. 7. – 1. 8. 2026",
     duration: "14 dní",
-    price: "13 000",
+    price: 13000,
     highlight: true,
     badge: "Nejoblíbenější",
     perks: [
@@ -37,7 +38,7 @@ const plans = [
     name: "2. týden",
     dates: "25. 7. – 1. 8. 2026",
     duration: "7 dní",
-    price: "8 900",
+    price: 8900,
     highlight: false,
     perks: [
       "Ubytování v chatkách",
@@ -62,6 +63,46 @@ function CheckMark({ highlight }: { highlight: boolean }) {
   );
 }
 
+function TiltCard({
+  children,
+  className,
+  disabled,
+}: {
+  children: React.ReactNode;
+  className: string;
+  disabled?: boolean;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const rawX = useMotionValue(0);
+  const rawY = useMotionValue(0);
+  const rotateX = useSpring(useTransform(rawY, [-60, 60], [6, -6]), { stiffness: 200, damping: 20 });
+  const rotateY = useSpring(useTransform(rawX, [-60, 60], [-6, 6]), { stiffness: 200, damping: 20 });
+
+  function handleMouseMove(e: React.MouseEvent<HTMLDivElement>) {
+    if (disabled) return;
+    const rect = e.currentTarget.getBoundingClientRect();
+    rawX.set(e.clientX - (rect.left + rect.width / 2));
+    rawY.set(e.clientY - (rect.top + rect.height / 2));
+  }
+
+  function handleMouseLeave() {
+    rawX.set(0);
+    rawY.set(0);
+  }
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ rotateX, rotateY, transformStyle: "preserve-3d", transformPerspective: 800 }}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
 export default function Pricing() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -80,87 +121,94 @@ export default function Pricing() {
             </h2>
             <p className="text-gray-500 text-base max-w-sm leading-relaxed">
               Kurz angličtiny v hodnotě{" "}
-              <strong className="text-[#14b8a6]">8 000 Kč</strong> je součástí
+              <CountUp to={8000} suffix=" Kč" duration={1500} className="text-[#14b8a6] font-bold" /> je součástí
               každého termínu. Bez příplatků.
             </p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-4 md:gap-0 md:border md:border-amber-200 rounded-xl md:rounded-2xl overflow-hidden">
+        <div className="grid md:grid-cols-3 gap-4 md:gap-6" style={{ perspective: 1200 }}>
           {plans.map((plan, i) => (
             <motion.div
               key={plan.name}
-              initial={{ opacity: 0, y: 12 }}
+              initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: 0.1 * i }}
-              className={`flex flex-col relative rounded-xl md:rounded-none ${
-                plan.highlight
-                  ? "bg-[#14b8a6] shadow-lg shadow-cyan-200"
-                  : "bg-white"
-              } ${
-                i < plans.length - 1
-                  ? "md:border-b-0 md:border-r md:border-amber-200"
-                  : ""
-              }`}
+              transition={{ duration: 0.55, delay: 0.1 * i, ease: [0.22, 1, 0.36, 1] }}
             >
-              {plan.badge && (
-                <div className="absolute top-5 right-5">
-                  <span className="px-3 py-1 bg-[#fbbf24] text-[#111] text-[10px] font-black uppercase tracking-wider rounded-sm">
-                    {plan.badge}
-                  </span>
-                </div>
-              )}
+              <TiltCard
+                disabled={false}
+                className={`flex flex-col relative rounded-2xl h-full ${
+                  plan.highlight
+                    ? "bg-[#14b8a6] shadow-xl shadow-cyan-200/60"
+                    : "bg-white border border-amber-100 shadow-sm hover:shadow-md transition-shadow"
+                }`}
+              >
+                {plan.badge && (
+                  <div className="absolute top-5 right-5">
+                    <motion.span
+                      className="px-3 py-1 bg-[#fbbf24] text-[#111] text-[10px] font-black uppercase tracking-wider rounded-sm inline-block"
+                      animate={{ rotate: [0, -2, 2, -1, 0] }}
+                      transition={{ duration: 3, repeat: Infinity, repeatDelay: 4 }}
+                    >
+                      {plan.badge}
+                    </motion.span>
+                  </div>
+                )}
 
-              <div className="p-8 md:p-10 flex-1">
-                <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${plan.highlight ? "text-teal-200" : "text-[#14b8a6]"}`}>
-                  {plan.duration}
-                </p>
-                <h3 className={`text-2xl font-black mb-1 ${plan.highlight ? "text-white" : "text-[#0f172a]"}`}>
-                  {plan.name}
-                </h3>
-                <p className={`text-xs mb-10 ${plan.highlight ? "text-teal-200/70" : "text-gray-400"}`}>
-                  {plan.dates}
-                </p>
+                <div className="p-8 md:p-10 flex-1">
+                  <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${plan.highlight ? "text-teal-200" : "text-[#14b8a6]"}`}>
+                    {plan.duration}
+                  </p>
+                  <h3 className={`text-2xl font-black mb-1 ${plan.highlight ? "text-white" : "text-[#0f172a]"}`}>
+                    {plan.name}
+                  </h3>
+                  <p className={`text-xs mb-10 ${plan.highlight ? "text-teal-200/70" : "text-gray-400"}`}>
+                    {plan.dates}
+                  </p>
 
-                <div
-                  className="mb-10 flex items-end gap-1.5 pb-8 border-b border-dashed"
-                  style={{ borderColor: plan.highlight ? "rgba(255,255,255,0.2)" : "#fde68a" }}
-                >
-                  <span
-                    className={`font-black leading-none ${plan.highlight ? "text-white" : "text-[#0f172a]"}`}
-                    style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}
+                  <div
+                    className="mb-10 flex items-end gap-1.5 pb-8 border-b border-dashed"
+                    style={{ borderColor: plan.highlight ? "rgba(255,255,255,0.2)" : "#fde68a" }}
                   >
-                    {plan.price}
-                  </span>
-                  <span className={`text-sm mb-1.5 font-bold ${plan.highlight ? "text-teal-200" : "text-gray-400"}`}>
-                    Kč
-                  </span>
+                    <span
+                      className={`font-black leading-none tabular-nums ${plan.highlight ? "text-white" : "text-[#0f172a]"}`}
+                      style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}
+                    >
+                      <CountUp to={plan.price} duration={1600} />
+                    </span>
+                    <span className={`text-sm mb-1.5 font-bold ${plan.highlight ? "text-teal-200" : "text-gray-400"}`}>
+                      Kč
+                    </span>
+                  </div>
+
+                  <ul className="space-y-3">
+                    {plan.perks.map((perk) => (
+                      <li key={perk} className="flex items-center gap-3">
+                        <CheckMark highlight={plan.highlight} />
+                        <span className={`text-base ${plan.highlight ? "text-white/90" : "text-gray-600"}`}>
+                          {perk}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <ul className="space-y-3">
-                  {plan.perks.map((perk) => (
-                    <li key={perk} className="flex items-center gap-3">
-                      <CheckMark highlight={plan.highlight} />
-                      <span className={`text-base ${plan.highlight ? "text-white/90" : "text-gray-600"}`}>
-                        {perk}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="px-8 md:px-10 pb-8 md:pb-10">
-                <a
-                  href="#contact"
-                  className={`block w-full py-4 text-center font-black text-sm uppercase tracking-wider transition-colors rounded-lg ${
-                    plan.highlight
-                      ? "bg-[#fbbf24] text-[#111] hover:bg-[#f59e0b]"
-                      : "bg-[#14b8a6] text-white hover:bg-[#0d9488]"
-                  }`}
-                >
-                  Přihlásit dítě →
-                </a>
-              </div>
+                <div className="px-8 md:px-10 pb-8 md:pb-10">
+                  <motion.a
+                    href="#contact"
+                    className={`block w-full py-4 text-center font-black text-sm uppercase tracking-wider rounded-lg ${
+                      plan.highlight
+                        ? "bg-[#fbbf24] text-[#111] hover:bg-[#f59e0b]"
+                        : "bg-[#14b8a6] text-white hover:bg-[#0d9488]"
+                    }`}
+                    whileHover={{ scale: 1.03 }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 17 }}
+                  >
+                    Přihlásit dítě →
+                  </motion.a>
+                </div>
+              </TiltCard>
             </motion.div>
           ))}
         </div>

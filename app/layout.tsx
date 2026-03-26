@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import ScrollProgress from "@/components/ScrollProgress";
+import CursorSparkle from "@/components/CursorSparkle";
+import StickyMobileCTA from "@/components/StickyMobileCTA";
 
 const inter = Inter({
   subsets: ["latin", "latin-ext"],
@@ -21,7 +24,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-[var(--font-inter)]">{children}</body>
+      <body className="min-h-full flex flex-col font-[var(--font-inter)]">
+        <ScrollProgress />
+        <CursorSparkle />
+        <StickyMobileCTA />
+        {children}
+      </body>
     </html>
   );
 }

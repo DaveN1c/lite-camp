@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef } from "react";
 
 export default function TesimeSe() {
@@ -40,18 +40,32 @@ export default function TesimeSe() {
           </p>
 
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-10 py-4 bg-[#14b8a6] text-white font-black text-sm uppercase tracking-wider hover:bg-[#0d9488] transition-colors rounded-lg"
-            >
-              Přihlásit dítě →
-            </a>
-            <a
+            <div className="relative">
+              {/* Pulsing ring behind primary CTA */}
+              <motion.span
+                className="absolute inset-0 rounded-lg bg-[#14b8a6]"
+                animate={{ scale: [1, 1.18, 1], opacity: [0.4, 0, 0.4] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+              />
+              <motion.a
+                href="#contact"
+                className="relative inline-flex items-center gap-2 px-10 py-4 bg-[#14b8a6] text-white font-black text-sm uppercase tracking-wider hover:bg-[#0d9488] transition-colors rounded-lg"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                Přihlásit dítě →
+              </motion.a>
+            </div>
+            <motion.a
               href="#pricing"
               className="inline-flex items-center gap-2 px-10 py-4 border-2 border-amber-800/25 text-amber-900 font-black text-sm uppercase tracking-wider hover:border-amber-800/50 transition-colors rounded-lg"
+              whileHover={{ scale: 1.04, y: -1 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
             >
               Termíny a ceny
-            </a>
+            </motion.a>
           </div>
         </motion.div>
       </div>

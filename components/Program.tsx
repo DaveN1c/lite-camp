@@ -3,6 +3,7 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import Image from "next/image";
+import CountUp from "@/components/CountUp";
 
 const schedule = [
   { time: "Ráno", activity: "Budíček & rozcvička", detail: "Protažení, cvičení a ranní hry" },
@@ -88,13 +89,15 @@ export default function Program() {
                 Kurz angličtiny
               </p>
               <ul className="space-y-4">
-                {[
-                  "Rozřazovací test pro každé dítě",
-                  "Přirozená forma výuky",
-                  "Konverzace, hry a aktivity",
-                  "Hodnota kurzu 8 000 Kč v ceně",
-                ].map((text) => (
-                  <li key={text} className="flex items-start gap-3">
+                {(
+                  [
+                    "Rozřazovací test pro každé dítě",
+                    "Přirozená forma výuky",
+                    "Konverzace, hry a aktivity",
+                    <>Hodnota kurzu <CountUp to={8000} suffix=" Kč" duration={1500} /> v ceně</>,
+                  ] as React.ReactNode[]
+                ).map((text, i) => (
+                  <li key={i} className="flex items-start gap-3">
                     <CheckMark />
                     <span className="text-white/90 text-base">{text}</span>
                   </li>

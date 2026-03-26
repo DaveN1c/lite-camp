@@ -71,7 +71,7 @@ export default function Reviews() {
             <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
               Co říkají děti.
             </h2>
-            <p className="text-gray-400 text-base leading-relaxed max-w-md">
+            <p className="text-gray-500 text-base leading-relaxed max-w-md">
               Tyhle slova nepsali rodiče ani marketéři — napsaly je děti po návratu domů.
             </p>
           </div>
@@ -102,7 +102,7 @@ export default function Reviews() {
                 </div>
               </div>
 
-              <p className="text-gray-600 text-sm leading-relaxed">
+              <p className="text-gray-600 text-base leading-relaxed">
                 {review.text}
               </p>
             </motion.div>

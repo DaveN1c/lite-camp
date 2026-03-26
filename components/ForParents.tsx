@@ -117,7 +117,7 @@ export default function ForParents() {
                   </div>
                   <span className="font-black text-[#0f172a] text-sm">{item.title}</span>
                 </div>
-                <p className="text-gray-500 text-sm leading-relaxed">{item.content}</p>
+                <p className="text-gray-500 text-base leading-relaxed">{item.content}</p>
               </div>
             </motion.div>
           ))}

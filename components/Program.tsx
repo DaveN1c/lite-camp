@@ -40,7 +40,7 @@ export default function Program() {
             <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
               Jak vypadá typický den?
             </h2>
-            <p className="text-gray-400 text-base leading-relaxed max-w-md">
+            <p className="text-gray-500 text-base leading-relaxed max-w-md">
               Každý den je nabitý — ráno angličtina, odpoledne dobrodružství, večer pohádky v angličtině.
             </p>
           </div>
@@ -62,12 +62,12 @@ export default function Program() {
                     <span className="text-[10px] text-[#14b8a6] font-bold uppercase tracking-wider w-24 flex-shrink-0">
                       {item.time}
                     </span>
-                    <span className="font-black text-sm text-[#0f172a]">
+                    <span className="font-black text-base text-[#0f172a]">
                       {item.activity}
                     </span>
                   </div>
                   {item.detail && (
-                    <p className="text-xs text-gray-400 mt-0.5 ml-[6.75rem]">
+                    <p className="text-sm text-gray-400 mt-0.5 ml-[6.75rem]">
                       {item.detail}
                     </p>
                   )}
@@ -96,7 +96,7 @@ export default function Program() {
                 ].map((text) => (
                   <li key={text} className="flex items-start gap-3">
                     <CheckMark />
-                    <span className="text-white/85 text-sm">{text}</span>
+                    <span className="text-white/90 text-base">{text}</span>
                   </li>
                 ))}
               </ul>

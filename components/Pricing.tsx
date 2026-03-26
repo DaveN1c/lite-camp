@@ -141,7 +141,7 @@ export default function Pricing() {
                   {plan.perks.map((perk) => (
                     <li key={perk} className="flex items-center gap-3">
                       <CheckMark highlight={plan.highlight} />
-                      <span className={`text-sm ${plan.highlight ? "text-white/80" : "text-gray-600"}`}>
+                      <span className={`text-base ${plan.highlight ? "text-white/90" : "text-gray-600"}`}>
                         {perk}
                       </span>
                     </li>

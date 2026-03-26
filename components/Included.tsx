@@ -54,7 +54,7 @@ export default function Included() {
             <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
               Žádné skryté poplatky.
             </h2>
-            <p className="text-gray-400 text-base leading-relaxed max-w-md">
+            <p className="text-gray-500 text-base leading-relaxed max-w-md">
               Cena zahrnuje vše podstatné — od stravy po pojištění. Nic navíc neplatíte.
             </p>
           </div>
@@ -75,7 +75,7 @@ export default function Included() {
               {included.map((text) => (
                 <li key={text} className="flex items-start gap-3">
                   <CheckIcon />
-                  <span className="text-white/85 text-sm leading-relaxed">{text}</span>
+                  <span className="text-white/90 text-base leading-relaxed">{text}</span>
                 </li>
               ))}
             </ul>
@@ -96,7 +96,7 @@ export default function Included() {
                 {notIncluded.map((text) => (
                   <li key={text} className="flex items-start gap-3">
                     <DashIcon />
-                    <span className="text-gray-500 text-sm leading-relaxed">{text}</span>
+                    <span className="text-gray-600 text-base leading-relaxed">{text}</span>
                   </li>
                 ))}
               </ul>

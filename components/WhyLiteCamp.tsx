@@ -43,6 +43,14 @@ const ACCENT_STARS = [
   { top: "70%", left: "5%", size: 16, delay: 0.4 },
 ];
 
+const FLOATERS = [
+  { top: "8%",  left: "1%",  content: "🏊", size: 20, delay: 0.2, duration: 5.0 },
+  { top: "35%", right: "1%", content: "🎒", size: 18, delay: 1.0, duration: 4.5 },
+  { top: "60%", left: "3%",  content: "🌈", size: 16, delay: 0.6, duration: 5.8 },
+  { bottom: "8%", right: "2%", content: "⭐", size: 18, delay: 1.6, duration: 4.2 },
+  { top: "80%", left: "1%",  content: "🎨", size: 16, delay: 2.0, duration: 5.3 },
+];
+
 export default function WhyLiteCamp() {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
@@ -72,12 +80,25 @@ export default function WhyLiteCamp() {
       {ACCENT_STARS.map((s, i) => (
         <motion.div
           key={i}
-          className="absolute text-[#fbbf24] pointer-events-none hidden lg:block"
+          className="absolute text-[#fbbf24] pointer-events-none"
           style={{ top: s.top, bottom: "bottom" in s ? s.bottom : undefined, left: "left" in s ? s.left : undefined, right: "right" in s ? s.right : undefined, fontSize: s.size, opacity: 0.5 }}
           animate={{ rotate: [0, 360] }}
           transition={{ duration: 12 + i * 3, repeat: Infinity, ease: "linear", delay: s.delay }}
         >
           ✦
+        </motion.div>
+      ))}
+
+      {/* Floating emoji */}
+      {FLOATERS.map((f, i) => (
+        <motion.div
+          key={i}
+          className="absolute pointer-events-none select-none flex items-center justify-center"
+          style={{ top: f.top, bottom: "bottom" in f ? f.bottom : undefined, left: "left" in f ? f.left : undefined, right: "right" in f ? f.right : undefined, fontSize: f.size }}
+          animate={{ y: [0, -14, 0], rotate: [0, 6, -6, 0] }}
+          transition={{ duration: f.duration, delay: f.delay, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {f.content}
         </motion.div>
       ))}
 

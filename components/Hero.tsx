@@ -32,14 +32,16 @@ const lineVariants = {
 
 // Fun floating decorations — stars, suns, blobs
 const FLOATERS = [
-  { top: "14%", left: "3%",  content: "⭐", size: 28, delay: 0,   duration: 4.2 },
-  { top: "58%", left: "5%",  content: "🌿", size: 24, delay: 1.1, duration: 5.6 },
-  { top: "32%", left: "1%",  content: "✦",  size: 20, delay: 0.6, duration: 3.8, color: "#fbbf24" },
-  { top: "78%", left: "7%",  content: "🎯", size: 22, delay: 1.8, duration: 4.9 },
-  { top: "8%",  right: "4%", content: "☀️", size: 32, delay: 0.3, duration: 5.1 },
-  { top: "50%", right: "2%", content: "⭐", size: 20, delay: 2,   duration: 4.4 },
-  { top: "72%", right: "6%", content: "🏕️", size: 26, delay: 0.8, duration: 6   },
-  { top: "25%", right: "8%", content: "✦",  size: 16, delay: 1.5, duration: 5.3, color: "#14b8a6" },
+  { top: "14%", left: "3%",  content: "⭐", size: 22, delay: 0,   duration: 4.2 },
+  { top: "58%", left: "5%",  content: "🌿", size: 20, delay: 1.1, duration: 5.6 },
+  { top: "32%", left: "1%",  content: "✦",  size: 18, delay: 0.6, duration: 3.8, color: "#fbbf24" },
+  { top: "78%", left: "7%",  content: "🎯", size: 18, delay: 1.8, duration: 4.9 },
+  { top: "8%",  right: "4%", content: "☀️", size: 26, delay: 0.3, duration: 5.1 },
+  { top: "50%", right: "2%", content: "⭐", size: 18, delay: 2,   duration: 4.4 },
+  { top: "72%", right: "6%", content: "🏕️", size: 22, delay: 0.8, duration: 6   },
+  { top: "25%", right: "8%", content: "✦",  size: 14, delay: 1.5, duration: 5.3, color: "#14b8a6" },
+  { top: "42%", left: "2%",  content: "🌟", size: 16, delay: 2.2, duration: 4.7 },
+  { top: "88%", right: "3%", content: "🎪", size: 20, delay: 0.5, duration: 5.8 },
 ];
 
 export default function Hero() {
@@ -69,7 +71,7 @@ export default function Hero() {
       {FLOATERS.map((f, i) => (
         <motion.div
           key={i}
-          className="absolute pointer-events-none select-none hidden lg:flex items-center justify-center"
+          className="absolute pointer-events-none select-none flex items-center justify-center"
           style={{
             top: f.top,
             left: "left" in f ? f.left : undefined,
@@ -95,17 +97,6 @@ export default function Hero() {
 
           {/* Left — copy */}
           <div>
-            <motion.p
-              initial={{ opacity: 0, x: -12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5 }}
-              className="text-[#14b8a6] font-bold uppercase tracking-[0.3em] mb-8 flex items-center gap-3"
-              style={{ fontSize: "0.85rem" }}
-            >
-              <span className="w-8 h-px bg-[#14b8a6] inline-block" />
-              Letní tábor s angličtinou 2026
-            </motion.p>
-
             <motion.h1
               className="text-[#0f172a] leading-[0.92] tracking-tight mb-10 overflow-hidden"
               style={{ fontSize: "clamp(2.8rem, 4.5vw, 4.2rem)", fontFamily: "var(--font-fredoka)", fontWeight: 800 }}

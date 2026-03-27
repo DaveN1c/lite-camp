@@ -127,6 +127,23 @@ export default function Pricing() {
           ✦
         </motion.div>
       ))}
+      {/* Floating emoji */}
+      {[
+        { top: "10%", left: "1%",  content: "🎪", size: 20, delay: 0.4, dur: 4.6 },
+        { top: "35%", right: "1%", content: "💛", size: 18, delay: 1.3, dur: 5.0 },
+        { top: "60%", left: "2%",  content: "🏕️", size: 20, delay: 0.8, dur: 5.4 },
+        { bottom: "8%", right: "2%", content: "🌟", size: 18, delay: 1.9, dur: 4.3 },
+        { top: "80%", left: "3%",  content: "🎯", size: 16, delay: 2.3, dur: 4.8 },
+      ].map((f, i) => (
+        <motion.div key={i} className="absolute pointer-events-none select-none flex items-center justify-center"
+          style={{ top: f.top, bottom: "bottom" in f ? f.bottom : undefined, left: "left" in f ? f.left : undefined, right: "right" in f ? f.right : undefined, fontSize: f.size }}
+          animate={{ y: [0, -12, 0], rotate: [0, 5, -5, 0] }}
+          transition={{ duration: f.dur, delay: f.delay, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {f.content}
+        </motion.div>
+      ))}
+
       {/* Circle blob decorations */}
       <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-teal-50/50 pointer-events-none" />
       <div className="absolute -bottom-16 -right-16 w-72 h-72 rounded-full bg-amber-100/40 pointer-events-none" />

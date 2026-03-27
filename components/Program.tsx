@@ -47,6 +47,23 @@ export default function Program() {
         ))}
       </svg>
 
+      {/* Floating emoji */}
+      {[
+        { top: "12%", left: "1%",  content: "🗣️", size: 20, delay: 0.3, dur: 4.8 },
+        { top: "40%", right: "1%", content: "📚", size: 18, delay: 1.2, dur: 5.2 },
+        { top: "65%", left: "2%",  content: "🌞", size: 20, delay: 0.7, dur: 4.4 },
+        { bottom: "10%", right: "2%", content: "🎵", size: 16, delay: 1.8, dur: 5.6 },
+        { top: "85%", left: "4%",  content: "🏃", size: 18, delay: 2.1, dur: 4.0 },
+      ].map((f, i) => (
+        <motion.div key={i} className="absolute pointer-events-none select-none flex items-center justify-center"
+          style={{ top: f.top, bottom: "bottom" in f ? f.bottom : undefined, left: "left" in f ? f.left : undefined, right: "right" in f ? f.right : undefined, fontSize: f.size }}
+          animate={{ y: [0, -12, 0], rotate: [0, 5, -5, 0] }}
+          transition={{ duration: f.dur, delay: f.delay, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {f.content}
+        </motion.div>
+      ))}
+
       {/* Wavy water lines */}
       <svg className="absolute top-0 right-0 w-1/2 pointer-events-none select-none" style={{ opacity: 0.05 }} viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
         {[20,50,80,110,140,170].map((y, i) => (

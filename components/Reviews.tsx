@@ -72,6 +72,22 @@ export default function Reviews() {
         ))}
       </svg>
 
+      {/* Floating emoji */}
+      {[
+        { top: "8%",  left: "1%",  content: "💬", size: 20, delay: 0.5, dur: 4.9 },
+        { top: "40%", right: "1%", content: "❤️", size: 18, delay: 1.1, dur: 5.1 },
+        { top: "70%", left: "2%",  content: "🙌", size: 20, delay: 0.9, dur: 4.5 },
+        { bottom: "6%", right: "2%", content: "⭐", size: 18, delay: 1.7, dur: 5.5 },
+      ].map((f, i) => (
+        <motion.div key={i} className="absolute pointer-events-none select-none flex items-center justify-center"
+          style={{ top: f.top, bottom: "bottom" in f ? f.bottom : undefined, left: "left" in f ? f.left : undefined, right: "right" in f ? f.right : undefined, fontSize: f.size }}
+          animate={{ y: [0, -12, 0], rotate: [0, 5, -5, 0] }}
+          transition={{ duration: f.dur, delay: f.delay, repeat: Infinity, ease: "easeInOut" }}
+        >
+          {f.content}
+        </motion.div>
+      ))}
+
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
 
         <div ref={ref} className="mb-16">

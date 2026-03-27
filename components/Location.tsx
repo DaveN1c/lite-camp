@@ -62,7 +62,7 @@ export default function Location() {
         <path d="M0,55 C120,80 240,30 360,55 C480,80 600,30 720,55 C840,80 960,30 1080,55 C1200,80 1320,30 1440,55 L1440,80 L0,80 Z" fill="#0d9488" />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
         <div ref={ref} className="mb-16">
           <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">
             <span className="w-8 h-px bg-[#14b8a6] inline-block" />

@@ -15,6 +15,27 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  font-size: 1.05rem;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+/* Minimum readable size & weight for all text elements */
+p, li, td, th {
+  font-size: max(1rem, 1em);
+  font-weight: 500;
+}
+
+/* Small helper texts — never below 14px */
+small, .text-xs, [class*="text-xs"] {
+  font-size: max(0.875rem, 0.875em) !important;
+  font-weight: 600 !important;
+}
+
+/* Labels, captions — minimum 13px and always bold */
+[class*="text-\[10px\]"], [class*="text-\[11px\]"], [class*="text-\[12px\]"] {
+  font-size: 0.85rem !important;
+  font-weight: 700 !important;
 }
 
 h1, h2, h3, h4, h5, h6 {

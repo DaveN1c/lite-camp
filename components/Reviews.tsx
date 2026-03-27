@@ -72,7 +72,7 @@ export default function Reviews() {
         ))}
       </svg>
 
-      <div className="max-w-7xl mx-auto px-6 lg:px-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
 
         <div ref={ref} className="mb-16">
           <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">

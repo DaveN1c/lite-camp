@@ -127,6 +127,10 @@ export default function Pricing() {
           ✦
         </motion.div>
       ))}
+      {/* Circle blob decorations */}
+      <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-teal-50/50 pointer-events-none" />
+      <div className="absolute -bottom-16 -right-16 w-72 h-72 rounded-full bg-amber-100/40 pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-white/20 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div ref={ref} className="mb-16">
           <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">

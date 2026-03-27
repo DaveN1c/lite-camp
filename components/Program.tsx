@@ -30,7 +30,11 @@ export default function Program() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="program" className="py-24 md:py-36 bg-[#f0fdf9]">
+    <section id="program" className="py-24 md:py-36 bg-[#f0fdf9] relative overflow-hidden">
+      {/* Circle blob decorations */}
+      <div className="absolute -top-16 -left-16 w-72 h-72 rounded-full bg-teal-200/30 pointer-events-none" />
+      <div className="absolute top-1/3 -right-20 w-80 h-80 rounded-full bg-white/50 pointer-events-none" />
+      <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-teal-100/20 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div ref={ref} className="mb-16">
           <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">

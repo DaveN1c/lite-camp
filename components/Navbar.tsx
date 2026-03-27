@@ -46,7 +46,8 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="relative text-gray-500 hover:text-[#14b8a6] text-[11px] font-bold uppercase tracking-[0.1em] transition-colors group"
+              className="relative text-gray-600 hover:text-[#14b8a6] text-[13px] font-extrabold transition-colors group"
+              style={{ fontFamily: "var(--font-fredoka)" }}
             >
               {l.label}
               <span className="absolute -bottom-0.5 left-0 w-0 h-px bg-[#14b8a6] group-hover:w-full transition-all duration-200" />

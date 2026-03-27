@@ -4,7 +4,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import CountUp from "@/components/CountUp";
-import Mascot from "@/components/Mascot";
 
 const SLIDES = [
   { src: "/fotky/group-photo.jpg", caption: "Celý tábor pohromadě — léto 2025" },
@@ -104,7 +103,7 @@ export default function Hero() {
 
             <motion.h1
               className="text-[#0f172a] leading-[0.92] tracking-tight mb-10 overflow-hidden"
-              style={{ fontSize: "clamp(3.4rem, 8vw, 8rem)", fontFamily: "var(--font-fredoka)" }}
+              style={{ fontSize: "clamp(2.8rem, 4.5vw, 4.2rem)", fontFamily: "var(--font-fredoka)", fontWeight: 800 }}
               variants={containerVariants}
               initial="hidden"
               animate="show"
@@ -198,19 +197,6 @@ export default function Hero() {
               </motion.a>
             </motion.div>
 
-            {/* Mascot + fun tagline */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.7 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 1.1, type: "spring", stiffness: 200 }}
-              className="hidden lg:flex items-end gap-4"
-            >
-              <Mascot size={130} />
-              <div className="mb-4 bg-white rounded-2xl rounded-bl-none px-4 py-3 shadow-md shadow-teal-100 border border-teal-100">
-                <p className="text-[#14b8a6] font-bold" style={{ fontSize: "0.95rem" }}>Čeká tě nejlepší léto! 🏕️</p>
-                <p className="text-gray-400" style={{ fontSize: "0.8rem" }}>Přidej se k nám</p>
-              </div>
-            </motion.div>
           </div>
 
           {/* Right — image slider */}

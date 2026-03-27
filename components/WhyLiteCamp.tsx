@@ -52,6 +52,11 @@ export default function WhyLiteCamp() {
       {/* Dot pattern background */}
       <div className="dot-pattern absolute inset-0 pointer-events-none" />
 
+      {/* Circle blob decorations */}
+      <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-teal-100/40 pointer-events-none" />
+      <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-teal-50/60 pointer-events-none" />
+      <div className="absolute top-1/2 -translate-y-1/2 right-0 w-96 h-96 rounded-full bg-amber-50/50 pointer-events-none" />
+
       {/* Decorative stars */}
       {ACCENT_STARS.map((s, i) => (
         <motion.div
@@ -145,7 +150,7 @@ export default function WhyLiteCamp() {
               </div>
 
               {Array.isArray(f.description) ? (
-                <ul className="text-gray-500 leading-relaxed space-y-3 list-none" style={{ fontSize: "1rem" }}>
+                <ul className="text-gray-500 leading-relaxed space-y-3 list-none" style={{ fontSize: "1.05rem" }}>
                   {f.description.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-gray-600">
                       <span className="mt-2 w-2 h-2 rounded-full bg-[#14b8a6] flex-shrink-0" />
@@ -154,7 +159,7 @@ export default function WhyLiteCamp() {
                   ))}
                 </ul>
               ) : (
-                <p className="text-gray-600 leading-relaxed" style={{ fontSize: "1rem" }}>{f.description}</p>
+                <p className="text-gray-600 leading-relaxed" style={{ fontSize: "1.05rem" }}>{f.description}</p>
               )}
             </motion.div>
           ))}

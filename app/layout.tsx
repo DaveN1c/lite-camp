@@ -1,13 +1,13 @@
 import type { Metadata } from "next";
-import { Fredoka, Nunito } from "next/font/google";
+import { Baloo_2, Nunito } from "next/font/google";
 import "./globals.css";
 import ScrollProgress from "@/components/ScrollProgress";
 import CursorSparkle from "@/components/CursorSparkle";
 import StickyMobileCTA from "@/components/StickyMobileCTA";
 
-const fredoka = Fredoka({
+const baloo2 = Baloo_2({
   subsets: ["latin", "latin-ext"],
-  weight: ["300", "400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
   variable: "--font-fredoka",
 });
 
@@ -30,8 +30,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="cs" className={`${fredoka.variable} ${nunito.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col" style={{ fontFamily: "var(--font-nunito), sans-serif", fontSize: "18px" }}>
+    <html lang="cs" className={`${baloo2.variable} ${nunito.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col" style={{ fontFamily: "var(--font-nunito), sans-serif", fontSize: "19px" }}>
         <ScrollProgress />
         <CursorSparkle />
         <StickyMobileCTA />

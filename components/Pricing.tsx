@@ -131,6 +131,29 @@ export default function Pricing() {
       <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-teal-50/50 pointer-events-none" />
       <div className="absolute -bottom-16 -right-16 w-72 h-72 rounded-full bg-amber-100/40 pointer-events-none" />
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full bg-white/20 pointer-events-none" />
+
+      {/* Tent / camping icons background */}
+      <svg className="absolute top-0 right-0 w-1/3 pointer-events-none select-none" style={{ opacity: 0.05 }} viewBox="0 0 400 300" fill="#f59e0b" xmlns="http://www.w3.org/2000/svg">
+        {/* Big tent */}
+        <polygon points="200,20 360,280 40,280" />
+        <polygon points="200,20 280,280 120,280" fill="#fbbf24" />
+        {/* Door */}
+        <path d="M175,280 Q200,230 225,280" fill="#f59e0b" />
+        {/* Flag */}
+        <line x1="200" y1="20" x2="200" y2="-5" stroke="#f59e0b" strokeWidth="3" />
+        <polygon points="200,-5 225,10 200,25" fill="#fbbf24" />
+      </svg>
+
+      {/* Sunburst at bottom-left */}
+      <svg className="absolute -bottom-20 -left-20 w-80 pointer-events-none select-none" style={{ opacity: 0.05 }} viewBox="0 0 300 300" fill="#fbbf24" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="150" cy="150" r="55" />
+        {[0,30,60,90,120,150,180,210,240,270,300,330].map((deg) => (
+          <line key={deg} x1="150" y1="150"
+            x2={150 + Math.cos(deg * Math.PI / 180) * 145}
+            y2={150 + Math.sin(deg * Math.PI / 180) * 145}
+            stroke="#fbbf24" strokeWidth="8" strokeLinecap="round" />
+        ))}
+      </svg>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div ref={ref} className="mb-16">
           <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">

@@ -47,7 +47,21 @@ export default function Location() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="location" className="py-24 md:py-36 bg-white">
+    <section id="location" className="py-24 md:py-36 bg-white relative overflow-hidden">
+      {/* Topographic wave rings — water / island feel */}
+      <svg className="absolute -right-20 top-1/2 -translate-y-1/2 w-[500px] pointer-events-none select-none" style={{ opacity: 0.05 }} viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {[30,60,90,120,150,180].map((r, i) => (
+          <circle key={i} cx="200" cy="200" r={r} stroke="#14b8a6" strokeWidth="2" />
+        ))}
+        <circle cx="200" cy="200" r="18" fill="#14b8a6" />
+      </svg>
+
+      {/* Water waves at bottom */}
+      <svg className="absolute bottom-0 left-0 right-0 w-full pointer-events-none select-none" style={{ opacity: 0.04 }} viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,40 C120,70 240,10 360,40 C480,70 600,10 720,40 C840,70 960,10 1080,40 C1200,70 1320,10 1440,40 L1440,80 L0,80 Z" fill="#14b8a6" />
+        <path d="M0,55 C120,80 240,30 360,55 C480,80 600,30 720,55 C840,80 960,30 1080,55 C1200,80 1320,30 1440,55 L1440,80 L0,80 Z" fill="#0d9488" />
+      </svg>
+
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div ref={ref} className="mb-16">
           <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">

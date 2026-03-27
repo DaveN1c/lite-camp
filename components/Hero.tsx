@@ -60,6 +60,11 @@ export default function Hero() {
       className="min-h-screen flex flex-col pt-16 relative overflow-hidden"
       style={{ background: "linear-gradient(175deg, #e0f9f5 0%, #f0fdf9 55%, #fffbeb 100%)" }}
     >
+      {/* Background rolling hills silhouette */}
+      <svg className="absolute bottom-16 left-0 right-0 w-full pointer-events-none select-none" style={{ opacity: 0.05 }} viewBox="0 0 1440 200" fill="#14b8a6" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0,200 L0,140 Q120,60 240,120 Q360,180 480,100 Q600,20 720,90 Q840,160 960,80 Q1080,0 1200,70 Q1320,140 1440,100 L1440,200 Z" />
+      </svg>
+
       {/* Floating decorative elements */}
       {FLOATERS.map((f, i) => (
         <motion.div

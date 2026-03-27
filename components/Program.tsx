@@ -35,6 +35,25 @@ export default function Program() {
       <div className="absolute -top-16 -left-16 w-72 h-72 rounded-full bg-teal-200/30 pointer-events-none" />
       <div className="absolute top-1/3 -right-20 w-80 h-80 rounded-full bg-white/50 pointer-events-none" />
       <div className="absolute -bottom-20 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-teal-100/20 pointer-events-none" />
+
+      {/* Sunrise / sun rays background element */}
+      <svg className="absolute -bottom-10 -left-10 w-96 pointer-events-none select-none" style={{ opacity: 0.06 }} viewBox="0 0 400 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="200" cy="200" r="80" fill="#14b8a6" />
+        {[0,30,60,90,120,150,180,210,240,270,300,330].map((deg) => (
+          <line key={deg} x1="200" y1="200"
+            x2={200 + Math.cos(deg * Math.PI / 180) * 190}
+            y2={200 + Math.sin(deg * Math.PI / 180) * 190}
+            stroke="#14b8a6" strokeWidth="6" strokeLinecap="round" />
+        ))}
+      </svg>
+
+      {/* Wavy water lines */}
+      <svg className="absolute top-0 right-0 w-1/2 pointer-events-none select-none" style={{ opacity: 0.05 }} viewBox="0 0 600 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        {[20,50,80,110,140,170].map((y, i) => (
+          <path key={i} d={`M0,${y} C75,${y-20} 150,${y+20} 225,${y} C300,${y-20} 375,${y+20} 450,${y} C525,${y-20} 575,${y} 600,${y}`}
+            stroke="#14b8a6" strokeWidth="3" strokeLinecap="round" />
+        ))}
+      </svg>
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div ref={ref} className="mb-16">
           <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">

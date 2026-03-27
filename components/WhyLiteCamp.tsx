@@ -57,6 +57,17 @@ export default function WhyLiteCamp() {
       <div className="absolute -bottom-16 -left-16 w-64 h-64 rounded-full bg-teal-50/60 pointer-events-none" />
       <div className="absolute top-1/2 -translate-y-1/2 right-0 w-96 h-96 rounded-full bg-amber-50/50 pointer-events-none" />
 
+      {/* Forest silhouette background element */}
+      <svg className="absolute bottom-0 right-0 w-1/2 pointer-events-none select-none" style={{ opacity: 0.04 }} viewBox="0 0 600 340" fill="#14b8a6" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="80,340 40,220 58,220 20,130 38,130 5,50 -28,130 -10,130 -48,220 -30,220 -70,340" />
+        <polygon points="180,340 130,200 152,200 108,100 130,100 90,10 50,100 72,100 28,200 50,200 0,340" />
+        <polygon points="290,340 250,230 266,230 234,148 250,148 222,74 194,148 210,148 178,230 194,230 154,340" />
+        <polygon points="390,340 355,240 369,240 340,165 354,165 328,96 302,165 316,165 287,240 301,240 266,340" />
+        <polygon points="490,340 455,240 469,240 440,165 454,165 428,96 402,165 416,165 387,240 401,240 366,340" />
+        <polygon points="590,340 548,218 568,218 528,128 548,128 512,40 476,128 496,128 456,218 476,218 434,340" />
+        <rect x="-70" y="330" width="680" height="20" />
+      </svg>
+
       {/* Decorative stars */}
       {ACCENT_STARS.map((s, i) => (
         <motion.div

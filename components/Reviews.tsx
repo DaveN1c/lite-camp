@@ -59,7 +59,19 @@ export default function Reviews() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="reviews" className="py-24 md:py-36 bg-white">
+    <section id="reviews" className="py-24 md:py-36 bg-white relative overflow-hidden">
+      {/* Large quote mark background element */}
+      <svg className="absolute -top-8 -left-8 w-96 pointer-events-none select-none" style={{ opacity: 0.035 }} viewBox="0 0 200 160" fill="#14b8a6" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="160" fontSize="220" fontFamily="Georgia, serif">&ldquo;</text>
+      </svg>
+
+      {/* Stars scatter */}
+      <svg className="absolute top-10 right-10 w-72 pointer-events-none select-none" style={{ opacity: 0.05 }} viewBox="0 0 300 200" fill="#fbbf24" xmlns="http://www.w3.org/2000/svg">
+        {[[30,30,14],[100,80,10],[200,20,18],[250,100,12],[60,150,8],[180,160,16],[280,50,8]].map(([x,y,r],i) => (
+          <circle key={i} cx={x} cy={y} r={r} />
+        ))}
+      </svg>
+
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
 
         <div ref={ref} className="mb-16">

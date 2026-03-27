@@ -19,36 +19,47 @@ function MailIcon() {
 
 export default function Footer() {
   return (
-    <footer className="bg-[#ccfbf1] border-t border-teal-200">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12">
-        <div className="grid md:grid-cols-3 gap-8 items-start">
+    <footer className="relative overflow-hidden" style={{ background: "linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #0d9488 100%)" }}>
+      {/* Decorative stars */}
+      <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+        {["10%,15%", "85%,20%", "25%,70%", "70%,60%", "50%,40%", "90%,80%", "5%,85%"].map((pos, i) => {
+          const [l, t] = pos.split(",");
+          return (
+            <span key={i} style={{ position: "absolute", left: l, top: t, fontSize: 12 + (i % 3) * 6, opacity: 0.2, color: "white" }}>✦</span>
+          );
+        })}
+        <span style={{ position: "absolute", right: "8%", top: "30%", fontSize: 40, opacity: 0.15 }}>🏕️</span>
+        <span style={{ position: "absolute", left: "3%", bottom: "20%", fontSize: 30, opacity: 0.15 }}>⭐</span>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12 relative z-10">
+        <div className="grid md:grid-cols-3 gap-8 items-center">
           <div className="flex items-center gap-3">
-            <Logo size={36} />
+            <Logo size={40} />
             <div>
-              <p className="text-[#0f172a] font-black text-sm">LITE camp 2026</p>
-              <p className="text-gray-500 text-xs">LITE camp, o.p.s. · Chrudim</p>
-              <p className="text-gray-500 text-xs mt-0.5">Organizátor: LITE®, o.p.s.</p>
+              <p className="text-white font-black text-base" style={{ fontFamily: "var(--font-fredoka)" }}>LITE camp 2026</p>
+              <p className="text-white/60 text-xs">LITE camp, o.p.s. · Chrudim</p>
             </div>
           </div>
 
-          <div className="flex flex-col sm:flex-row md:justify-center gap-1 text-xs text-gray-500">
-            <a href="tel:+420774650545" className="hover:text-[#14b8a6] transition-colors">
+          <div className="flex flex-col sm:flex-row md:justify-center gap-2 text-sm text-white/70">
+            <a href="tel:+420774650545" className="hover:text-white transition-colors">
               <PhoneIcon />774 650 545
             </a>
-            <span className="hidden sm:inline mx-2 text-gray-400">·</span>
-            <a href="tel:+420739611714" className="hover:text-[#14b8a6] transition-colors">
+            <span className="hidden sm:inline mx-2 text-white/30">·</span>
+            <a href="tel:+420739611714" className="hover:text-white transition-colors">
               <PhoneIcon />739 611 714
             </a>
-            <span className="hidden sm:inline mx-2 text-gray-400">·</span>
-            <a href="mailto:hk@lite.cz" className="hover:text-[#14b8a6] transition-colors">
+            <span className="hidden sm:inline mx-2 text-white/30">·</span>
+            <a href="mailto:hk@lite.cz" className="hover:text-white transition-colors">
               <MailIcon />hk@lite.cz
             </a>
           </div>
 
-          <div className="text-xs text-gray-500 md:text-right space-y-1">
+          <div className="text-sm text-white/60 md:text-right space-y-1">
             <p>Čáslavská 1162, 537 01 Chrudim</p>
             <p>© {new Date().getFullYear()} LITE camp, o.p.s.</p>
-            <a href="https://inetio.cz" target="_blank" rel="noopener noreferrer" className="hover:text-[#14b8a6] transition-colors">Vytvořilo inetio s.r.o.</a>
+            <a href="https://inetio.cz" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Vytvořilo inetio s.r.o.</a>
           </div>
         </div>
       </div>

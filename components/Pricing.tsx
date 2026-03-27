@@ -108,7 +108,25 @@ export default function Pricing() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="pricing" className="py-24 md:py-36 bg-[#fffbeb]">
+    <section id="pricing" className="py-24 md:py-36 bg-[#fffbeb] relative overflow-hidden">
+      {/* Decorative background stars */}
+      {[
+        { top: "8%", left: "3%", size: 24, delay: 0 },
+        { top: "20%", right: "2%", size: 18, delay: 1 },
+        { bottom: "10%", left: "5%", size: 20, delay: 0.5 },
+        { bottom: "25%", right: "4%", size: 28, delay: 1.5 },
+        { top: "60%", left: "1%", size: 14, delay: 0.8 },
+      ].map((s, i) => (
+        <motion.div
+          key={i}
+          className="absolute text-amber-300 pointer-events-none hidden lg:block"
+          style={{ top: s.top, bottom: "bottom" in s ? s.bottom : undefined, left: "left" in s ? s.left : undefined, right: "right" in s ? s.right : undefined, fontSize: s.size, opacity: 0.6 }}
+          animate={{ rotate: [0, 360] }}
+          transition={{ duration: 10 + i * 2, repeat: Infinity, ease: "linear", delay: s.delay }}
+        >
+          ✦
+        </motion.div>
+      ))}
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div ref={ref} className="mb-16">
           <p className="text-[#14b8a6] text-xs font-bold uppercase tracking-[0.3em] mb-5 flex items-center gap-3">
@@ -116,8 +134,8 @@ export default function Pricing() {
             Termíny a ceny
           </p>
           <div className="grid lg:grid-cols-2 gap-8 items-end">
-            <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
-              Vyberte si termín.
+            <h2 className="text-[#0f172a] leading-tight" style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", fontFamily: "var(--font-fredoka)" }}>
+              Vyberte si termín. 🗓️
             </h2>
             <p className="text-gray-600 text-base max-w-sm leading-relaxed">
               Kurz angličtiny v hodnotě{" "}

@@ -6,13 +6,13 @@ import Image from "next/image";
 import CountUp from "@/components/CountUp";
 
 const schedule = [
-  { time: "Ráno", activity: "Budíček & rozcvička", detail: "Protažení, cvičení a ranní hry" },
-  { time: "Snídaně", activity: "Snídaně + úklid chatky", detail: "Ranní hygiena a úklid" },
-  { time: "Dopoledne", activity: "Angličtina", detail: "Konverzace, hry a aktivity — výuka přirozenou formou" },
-  { time: "Poledne", activity: "Oběd + polední klid", detail: "" },
-  { time: "Odpoledne", activity: "Táborový program", detail: "Hry, soutěže, výlety, koupání, tvořivé aktivity" },
-  { time: "Večer", activity: "Večeře", detail: "" },
-  { time: "Před večerkou", activity: "Anglické čtení", detail: "Čtení pohádek a příběhů v angličtině" },
+  { time: "Ráno", activity: "Budíček & rozcvička", detail: "Protažení, cvičení a ranní hry", emoji: "🌅", color: "#fef9c3" },
+  { time: "Snídaně", activity: "Snídaně + úklid chatky", detail: "Ranní hygiena a úklid", emoji: "🥞", color: "#fff" },
+  { time: "Dopoledne", activity: "Angličtina", detail: "Konverzace, hry a aktivity — výuka přirozenou formou", emoji: "🗣️", color: "#ccfbf1" },
+  { time: "Poledne", activity: "Oběd + polední klid", detail: "", emoji: "🍽️", color: "#fff" },
+  { time: "Odpoledne", activity: "Táborový program", detail: "Hry, soutěže, výlety, koupání, tvořivé aktivity", emoji: "🏊", color: "#e0f9f5" },
+  { time: "Večer", activity: "Večeře", detail: "", emoji: "🍕", color: "#fff" },
+  { time: "Před večerkou", activity: "Anglické čtení", detail: "Čtení pohádek a příběhů v angličtině", emoji: "📖", color: "#fef3c7" },
 ];
 
 function CheckMark() {
@@ -38,8 +38,8 @@ export default function Program() {
             Program
           </p>
           <div className="grid lg:grid-cols-2 gap-8 items-end">
-            <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
-              Jak vypadá typický den?
+            <h2 className="text-[#0f172a] leading-tight" style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", fontFamily: "var(--font-fredoka)" }}>
+              Jak vypadá typický den? ☀️
             </h2>
             <p className="text-gray-600 text-base leading-relaxed max-w-md">
               Každý den je nabitý — ráno angličtina, odpoledne dobrodružství, večer pohádky v angličtině.
@@ -56,14 +56,16 @@ export default function Program() {
                 initial={{ opacity: 0, x: -10 }}
                 animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.4, delay: 0.06 * i }}
-                className="flex items-stretch border-b border-teal-100 last:border-b-0 bg-white hover:bg-teal-50 transition-colors"
+                className="flex items-stretch border-b border-teal-100 last:border-b-0 hover:brightness-95 transition-all"
+                style={{ background: item.color }}
               >
                 <div className="flex-1 px-5 py-4">
                   <div className="flex items-center gap-3 flex-wrap">
-                    <span className="text-[10px] text-[#14b8a6] font-bold uppercase tracking-wider w-24 flex-shrink-0">
+                    <span className="text-2xl mr-2 flex-shrink-0">{item.emoji}</span>
+                    <span className="text-[10px] text-[#14b8a6] font-bold uppercase tracking-wider w-20 flex-shrink-0">
                       {item.time}
                     </span>
-                    <span className="font-black text-base text-[#0f172a]">
+                    <span className="font-black text-base text-[#0f172a]" style={{ fontFamily: "var(--font-fredoka)", fontSize: "1.05rem" }}>
                       {item.activity}
                     </span>
                   </div>

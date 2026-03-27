@@ -3,6 +3,9 @@
 :root {
   --background: #ffffff;
   --foreground: #111111;
+  --teal: #14b8a6;
+  --amber: #fbbf24;
+  --coral: #ff6b6b;
 }
 
 html {
@@ -14,9 +17,14 @@ body {
   color: var(--foreground);
 }
 
-::-webkit-scrollbar { width: 4px; }
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-fredoka), sans-serif;
+  letter-spacing: -0.01em;
+}
+
+::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: #ccfbf1; }
-::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 2px; }
+::-webkit-scrollbar-thumb { background: #14b8a6; border-radius: 3px; }
 
 @keyframes wiggle {
   0%, 100% { transform: rotate(0deg); }
@@ -31,12 +39,61 @@ body {
   to   { transform: translateX(-50%); }
 }
 
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  33%       { transform: translateY(-12px) rotate(3deg); }
+  66%       { transform: translateY(-6px) rotate(-2deg); }
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-18px); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes bounce-btn {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-5px); }
+}
+
+@keyframes pop-in {
+  0%   { transform: scale(0.5) rotate(-10deg); opacity: 0; }
+  80%  { transform: scale(1.1) rotate(3deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 28s linear infinite;
+  animation: marquee 22s linear infinite;
 }
 
 .marquee-track:hover {
   animation-play-state: paused;
+}
+
+.float-shape {
+  animation: float 4s ease-in-out infinite;
+}
+
+.float-slow {
+  animation: float-slow 6s ease-in-out infinite;
+}
+
+.spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+.dot-pattern {
+  background-image: radial-gradient(circle, rgba(20,184,166,0.12) 1.5px, transparent 1.5px);
+  background-size: 28px 28px;
+}
+
+.star-pattern {
+  background-image: radial-gradient(circle, rgba(251,191,36,0.1) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
 }

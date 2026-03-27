@@ -24,7 +24,7 @@ export default function StickyMobileCTA() {
         >
           <a
             href="#contact"
-            className="flex items-center gap-2 px-8 py-4 bg-[#fbbf24] text-[#111] font-black text-sm uppercase tracking-wider rounded-full shadow-xl shadow-amber-300/50"
+            className="flex items-center gap-2 px-8 py-4 bg-[#fbbf24] text-[#111] font-black text-sm uppercase tracking-wider rounded-full shadow-xl shadow-amber-300/50 whitespace-nowrap"
           >
             Přihlásit dítě →
           </a>

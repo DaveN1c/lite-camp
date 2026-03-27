@@ -41,7 +41,7 @@ export default function Program() {
             <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
               Jak vypadá typický den?
             </h2>
-            <p className="text-gray-500 text-base leading-relaxed max-w-md">
+            <p className="text-gray-600 text-base leading-relaxed max-w-md">
               Každý den je nabitý — ráno angličtina, odpoledne dobrodružství, večer pohádky v angličtině.
             </p>
           </div>
@@ -68,7 +68,7 @@ export default function Program() {
                     </span>
                   </div>
                   {item.detail && (
-                    <p className="text-sm text-gray-400 mt-0.5 ml-[6.75rem]">
+                    <p className="text-sm text-gray-500 mt-0.5 ml-[6.75rem]">
                       {item.detail}
                     </p>
                   )}
@@ -85,7 +85,7 @@ export default function Program() {
           >
             {/* English course box — colorful card, not dark */}
             <div className="bg-[#14b8a6] p-8 md:p-10 rounded-xl">
-              <p className="text-teal-200 text-xs font-bold uppercase tracking-[0.2em] mb-6">
+              <p className="text-white/80 text-xs font-bold uppercase tracking-[0.2em] mb-6">
                 Kurz angličtiny
               </p>
               <ul className="space-y-4">

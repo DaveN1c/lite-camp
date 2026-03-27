@@ -119,7 +119,7 @@ export default function Pricing() {
             <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
               Vyberte si termín.
             </h2>
-            <p className="text-gray-500 text-base max-w-sm leading-relaxed">
+            <p className="text-gray-600 text-base max-w-sm leading-relaxed">
               Kurz angličtiny v hodnotě{" "}
               <CountUp to={8000} suffix=" Kč" duration={1500} className="text-[#14b8a6] font-bold" /> je součástí
               každého termínu. Bez příplatků.
@@ -156,13 +156,13 @@ export default function Pricing() {
                 )}
 
                 <div className="p-8 md:p-10 flex-1">
-                  <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${plan.highlight ? "text-teal-200" : "text-[#14b8a6]"}`}>
+                  <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${plan.highlight ? "text-white/75" : "text-[#14b8a6]"}`}>
                     {plan.duration}
                   </p>
                   <h3 className={`text-2xl font-black mb-1 ${plan.highlight ? "text-white" : "text-[#0f172a]"}`}>
                     {plan.name}
                   </h3>
-                  <p className={`text-xs mb-10 ${plan.highlight ? "text-teal-200/70" : "text-gray-400"}`}>
+                  <p className={`text-xs mb-10 ${plan.highlight ? "text-white/60" : "text-gray-500"}`}>
                     {plan.dates}
                   </p>
 
@@ -176,7 +176,7 @@ export default function Pricing() {
                     >
                       <CountUp to={plan.price} duration={1600} />
                     </span>
-                    <span className={`text-sm mb-1.5 font-bold ${plan.highlight ? "text-teal-200" : "text-gray-400"}`}>
+                    <span className={`text-sm mb-1.5 font-bold ${plan.highlight ? "text-white/75" : "text-gray-500"}`}>
                       Kč
                     </span>
                   </div>

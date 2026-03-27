@@ -21,7 +21,7 @@ export default function TesimeSe() {
           transition={{ duration: 0.6 }}
           className="text-center"
         >
-          <p className="text-amber-800/50 text-xs font-bold uppercase tracking-[0.35em] mb-6 flex items-center justify-center gap-3">
+          <p className="text-amber-900/70 text-xs font-bold uppercase tracking-[0.35em] mb-6 flex items-center justify-center gap-3">
             <span className="w-8 h-px bg-amber-800/30 inline-block" />
             LITE camp 2026
             <span className="w-8 h-px bg-amber-800/30 inline-block" />
@@ -34,7 +34,7 @@ export default function TesimeSe() {
             Těšíme se na Vás!
           </h2>
 
-          <p className="text-amber-900/60 text-base md:text-xl font-medium max-w-lg mx-auto mb-10 leading-relaxed">
+          <p className="text-amber-900/80 text-base md:text-xl font-medium max-w-lg mx-auto mb-10 leading-relaxed">
             Místa jsou omezená.<br className="hidden sm:block" />
             Přihlaste své dítě co nejdříve.
           </p>

@@ -222,39 +222,39 @@ export default function ContactForm() {
                 </motion.div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-5">
-                  <p className="text-xs text-gray-400 mb-6">
+                  <p className="text-sm text-gray-500 mb-6">
                     Vyplňte formulář a my se vám ozveme s dalšími kroky.
                   </p>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Jméno rodiče *</label>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest block">Jméno rodiče *</label>
                       <input name="parentName" type="text" required placeholder="Jana Nováková" className={inputCls} />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Email *</label>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest block">Email *</label>
                       <input name="email" type="email" required placeholder="jana@email.cz" className={inputCls} />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Telefon *</label>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest block">Telefon *</label>
                       <input name="phone" type="tel" required placeholder="+420 123 456 789" className={inputCls} />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Jméno dítěte *</label>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest block">Jméno dítěte *</label>
                       <input name="childName" type="text" required placeholder="Tomáš Novák" className={inputCls} />
                     </div>
                   </div>
 
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Věk dítěte *</label>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest block">Věk dítěte *</label>
                       <input name="childAge" type="number" required min={7} max={17} placeholder="10" className={inputCls} />
                     </div>
                     <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Termín *</label>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest block">Termín *</label>
                       <select name="term" required className={inputCls}>
                         <option value="">Vyberte termín…</option>
                         {TERMS.map((t) => (
@@ -265,7 +265,7 @@ export default function ContactForm() {
                   </div>
 
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-bold text-gray-400 uppercase tracking-widest block">Zpráva / poznámka</label>
+                    <label className="text-xs font-semibold text-gray-500 uppercase tracking-widest block">Zpráva / poznámka</label>
                     <textarea name="message" rows={3} placeholder="Speciální stravovací požadavky, dotazy ohledně alergie…" className={`${inputCls} resize-none`} />
                   </div>
 

@@ -55,7 +55,7 @@ export default function Included() {
             <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
               Žádné skryté poplatky.
             </h2>
-            <p className="text-gray-500 text-base leading-relaxed max-w-md">
+            <p className="text-gray-600 text-base leading-relaxed max-w-md">
               Cena zahrnuje vše podstatné — od stravy po pojištění. Nic navíc neplatíte.
             </p>
           </div>
@@ -69,7 +69,7 @@ export default function Included() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="bg-[#14b8a6] p-8 md:p-10"
           >
-            <p className="text-teal-200 text-xs font-bold uppercase tracking-[0.2em] mb-8">
+            <p className="text-white/80 text-xs font-bold uppercase tracking-[0.2em] mb-8">
               Cena zahrnuje
             </p>
             <ul className="space-y-4">
@@ -90,14 +90,14 @@ export default function Included() {
             className="flex flex-col"
           >
             <div className="p-8 md:p-10 flex-1 bg-white border-b border-sky-100">
-              <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-400 mb-8">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mb-8">
                 Cena nezahrnuje
               </p>
               <ul className="space-y-4">
                 {notIncluded.map((text) => (
                   <li key={text} className="flex items-start gap-3">
                     <DashIcon />
-                    <span className="text-gray-600 text-base leading-relaxed">{text}</span>
+                    <span className="text-gray-700 text-base leading-relaxed">{text}</span>
                   </li>
                 ))}
               </ul>

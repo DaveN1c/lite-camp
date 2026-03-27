@@ -78,11 +78,11 @@ export default function WhyLiteCamp() {
               <h2 className="text-4xl md:text-6xl font-black text-[#0f172a] leading-tight">
                 Tábor, který dá víc než jen prázdniny.
               </h2>
-              <p className="mt-4 text-lg text-gray-500 font-medium">
+              <p className="mt-4 text-lg text-gray-600 font-medium">
                 Děti se vrátí s lepší angličtinou a nezapomenutelnými zážitky.
               </p>
             </div>
-            <p className="text-gray-500 text-base leading-relaxed max-w-md">
+            <p className="text-gray-600 text-base leading-relaxed max-w-md">
               Spojujeme táborové prázdniny s intenzivní výukou angličtiny, která bude dál bavit a zároveň si užijí léto naplno!
             </p>
           </div>
@@ -135,14 +135,14 @@ export default function WhyLiteCamp() {
               {Array.isArray(f.description) ? (
                 <ul className="text-gray-500 text-base leading-relaxed md:pt-0.5 space-y-2 list-none">
                   {f.description.map((item) => (
-                    <li key={item} className="flex items-start gap-2 text-base">
+                    <li key={item} className="flex items-start gap-2 text-base text-gray-600">
                       <span className="mt-2 w-1.5 h-1.5 rounded-full bg-[#14b8a6] flex-shrink-0" />
                       {item}
                     </li>
                   ))}
                 </ul>
               ) : (
-                <p className="text-gray-500 text-base leading-relaxed md:pt-0.5">{f.description}</p>
+                <p className="text-gray-600 text-base leading-relaxed md:pt-0.5">{f.description}</p>
               )}
             </motion.div>
           ))}

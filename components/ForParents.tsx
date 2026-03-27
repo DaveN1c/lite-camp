@@ -90,7 +90,7 @@ export default function ForParents() {
             <h2 className="text-4xl md:text-5xl font-black text-[#0f172a] leading-tight">
               Vaše dítě je<br />u nás v bezpečí.
             </h2>
-            <p className="text-gray-500 text-base leading-relaxed max-w-sm">
+            <p className="text-gray-600 text-base leading-relaxed max-w-sm">
               Postaráme se o vše — od stravy po pojištění.
             </p>
           </div>
@@ -106,7 +106,7 @@ export default function ForParents() {
               transition={{ duration: 0.38, delay: 0.07 * i }}
               className="flex gap-5 md:gap-8 items-start py-7 border-b border-amber-200 group"
             >
-              <span className="text-[11px] font-mono text-amber-300 font-bold pt-0.5 w-5 shrink-0 select-none">
+              <span className="text-[11px] font-mono text-amber-500 font-bold pt-0.5 w-5 shrink-0 select-none">
                 {item.id}
               </span>
 
@@ -117,7 +117,7 @@ export default function ForParents() {
                   </div>
                   <span className="font-black text-[#0f172a] text-sm">{item.title}</span>
                 </div>
-                <p className="text-gray-500 text-base leading-relaxed">{item.content}</p>
+                <p className="text-gray-600 text-base leading-relaxed">{item.content}</p>
               </div>
             </motion.div>
           ))}
@@ -132,28 +132,28 @@ export default function ForParents() {
         >
           <div className="grid md:grid-cols-[1fr_auto]">
             <div className="px-10 py-10 md:py-12">
-              <p className="text-teal-200 text-xs font-bold uppercase tracking-[0.25em] mb-4 flex items-center gap-2">
+              <p className="text-white/80 text-xs font-bold uppercase tracking-[0.25em] mb-4 flex items-center gap-2">
                 <span className="w-4 h-px bg-cyan-200 inline-block" />
                 Máte otázku?
               </p>
               <p className="text-white font-black text-2xl md:text-3xl leading-snug">
                 Rádi vám odpovíme<br />na cokoliv.
               </p>
-              <p className="text-cyan-100/60 text-sm mt-3 max-w-xs leading-relaxed">
+              <p className="text-white/70 text-sm mt-3 max-w-xs leading-relaxed">
                 Odpovídáme rychle, zpravidla do pár hodin.
               </p>
             </div>
 
             <div className="px-8 md:px-10 py-10 md:py-12 border-t border-white/15 md:border-t-0 md:border-l border-white/15 flex flex-col justify-center gap-2.5 md:min-w-[270px]">
-              <a href="tel:+420774650545" className="flex items-center gap-3 px-4 py-3.5 border border-white/20 text-white text-sm font-semibold hover:border-white/50 hover:bg-white/10 transition-all group/link rounded-lg">
-                <span className="text-white/40 group-hover/link:text-teal-200 transition-colors"><PhoneIcon /></span>
+              <a href="tel:+420774650545" className="flex items-center gap-3 px-4 py-3.5 border border-white/30 text-white text-sm font-semibold hover:border-white/60 hover:bg-white/10 transition-all group/link rounded-lg">
+                <span className="text-white/60 group-hover/link:text-teal-200 transition-colors"><PhoneIcon /></span>
                 <span className="flex-1 tabular-nums tracking-tight">774 650 545</span>
-                <span className="text-white/20 text-xs">→</span>
+                <span className="text-white/50 text-xs">→</span>
               </a>
-              <a href="tel:+420739611714" className="flex items-center gap-3 px-4 py-3.5 border border-white/20 text-white text-sm font-semibold hover:border-white/50 hover:bg-white/10 transition-all group/link rounded-lg">
-                <span className="text-white/40 group-hover/link:text-teal-200 transition-colors"><PhoneIcon /></span>
+              <a href="tel:+420739611714" className="flex items-center gap-3 px-4 py-3.5 border border-white/30 text-white text-sm font-semibold hover:border-white/60 hover:bg-white/10 transition-all group/link rounded-lg">
+                <span className="text-white/60 group-hover/link:text-teal-200 transition-colors"><PhoneIcon /></span>
                 <span className="flex-1 tabular-nums tracking-tight">739 611 714</span>
-                <span className="text-white/20 text-xs">→</span>
+                <span className="text-white/50 text-xs">→</span>
               </a>
               <a href="mailto:hk@lite.cz" className="flex items-center gap-3 px-4 py-3.5 bg-[#fbbf24] text-[#111] text-sm font-black hover:bg-[#f59e0b] transition-colors group/link rounded-lg">
                 <span className="opacity-50"><MailIcon /></span>

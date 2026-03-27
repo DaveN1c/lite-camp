@@ -109,7 +109,64 @@ export default function Hero() {
               ))}
             </motion.h1>
 
-            <p className="text-gray-500 text-base leading-relaxed max-w-md mb-5">
+            {/* Mobile image slider — lg:hidden, shares state with desktop slider */}
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="lg:hidden mt-8 mb-8"
+            >
+              <div
+                className="relative rounded-2xl overflow-hidden shadow-lg shadow-teal-100"
+                style={{ aspectRatio: "16/9" }}
+              >
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={current}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.6 }}
+                    className="absolute inset-0"
+                  >
+                    <Image
+                      src={SLIDES[current].src}
+                      alt={SLIDES[current].caption}
+                      fill
+                      style={{ objectFit: "cover" }}
+                      sizes="100vw"
+                      priority={current === 0}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/45 via-transparent to-transparent" />
+                  </motion.div>
+                </AnimatePresence>
+
+                <div className="absolute top-4 right-4 z-10">
+                  <span className="bg-[#fbbf24] text-[#111] text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-sm">
+                    Léto 2026
+                  </span>
+                </div>
+
+                <div className="absolute bottom-0 left-0 right-0 px-4 py-4 flex items-end justify-between z-10 gap-3">
+                  <p className="text-white/75 text-[10px] font-mono tracking-wider truncate">
+                    {SLIDES[current].caption}
+                  </p>
+                  <div className="flex gap-1.5 flex-shrink-0">
+                    {SLIDES.map((_, i) => (
+                      <button
+                        key={i}
+                        onClick={() => setCurrent(i)}
+                        className={`h-1.5 rounded-full transition-all duration-300 ${
+                          i === current ? "bg-[#fbbf24] w-5" : "bg-white/50 w-1.5"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            <p className="text-gray-600 text-base leading-relaxed max-w-md mb-5">
               Dva týdny na ostrově na řece Sázavě — koupání, kamarádi
               a výuka angličtiny přirozenou formou. Vaše dítě se vrátí nadšené.
             </p>
@@ -118,10 +175,10 @@ export default function Hero() {
               Pro děti od 7 do 17 let &nbsp;·&nbsp; 18. července – 1. srpna 2026
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex gap-3">
               <motion.a
                 href="#contact"
-                className="px-8 py-4 bg-[#fbbf24] text-[#111] font-black uppercase tracking-wider text-sm inline-flex items-center gap-2"
+                className="flex-1 sm:flex-none px-5 sm:px-8 py-4 bg-[#fbbf24] text-[#111] font-black uppercase tracking-wider text-xs sm:text-sm inline-flex items-center justify-center gap-2"
                 whileHover={{ scale: 1.04, y: -2 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}
@@ -130,7 +187,7 @@ export default function Hero() {
               </motion.a>
               <motion.a
                 href="#pricing"
-                className="px-8 py-4 border-2 border-[#14b8a6]/30 text-[#14b8a6] font-bold text-sm hover:border-[#14b8a6] hover:bg-[#14b8a6]/5 transition-all"
+                className="flex-1 sm:flex-none px-5 sm:px-8 py-4 border-2 border-[#14b8a6]/30 text-[#14b8a6] font-bold text-xs sm:text-sm flex items-center justify-center hover:border-[#14b8a6] hover:bg-[#14b8a6]/5 transition-all"
                 whileHover={{ scale: 1.03, y: -1 }}
                 whileTap={{ scale: 0.97 }}
                 transition={{ type: "spring", stiffness: 400, damping: 17 }}

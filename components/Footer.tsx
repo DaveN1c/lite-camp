@@ -27,7 +27,7 @@ export default function Footer() {
             <div>
               <p className="text-[#0f172a] font-black text-sm">LITE camp 2026</p>
               <p className="text-gray-500 text-xs">LITE camp, o.p.s. · Chrudim</p>
-              <p className="text-gray-400 text-[10px] mt-0.5">Organizátor: LITE®, o.p.s.</p>
+              <p className="text-gray-500 text-xs mt-0.5">Organizátor: LITE®, o.p.s.</p>
             </div>
           </div>
 
@@ -35,17 +35,17 @@ export default function Footer() {
             <a href="tel:+420774650545" className="hover:text-[#14b8a6] transition-colors">
               <PhoneIcon />774 650 545
             </a>
-            <span className="hidden sm:inline mx-2 text-gray-300">·</span>
+            <span className="hidden sm:inline mx-2 text-gray-400">·</span>
             <a href="tel:+420739611714" className="hover:text-[#14b8a6] transition-colors">
               <PhoneIcon />739 611 714
             </a>
-            <span className="hidden sm:inline mx-2 text-gray-300">·</span>
+            <span className="hidden sm:inline mx-2 text-gray-400">·</span>
             <a href="mailto:hk@lite.cz" className="hover:text-[#14b8a6] transition-colors">
               <MailIcon />hk@lite.cz
             </a>
           </div>
 
-          <div className="text-xs text-gray-400 md:text-right space-y-1">
+          <div className="text-xs text-gray-500 md:text-right space-y-1">
             <p>Čáslavská 1162, 537 01 Chrudim</p>
             <p>© {new Date().getFullYear()} LITE camp, o.p.s.</p>
             <a href="https://inetio.cz" target="_blank" rel="noopener noreferrer" className="hover:text-[#14b8a6] transition-colors">Vytvořilo inetio s.r.o.</a>

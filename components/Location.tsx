@@ -86,10 +86,11 @@ export default function Location() {
             className="min-h-[420px] lg:border-r border-teal-200"
           >
             <iframe
-              src="https://maps.google.com/maps?q=49.746448,15.162569&output=embed&z=14"
+              src="https://maps.google.com/maps?q=49.729722,15.1625&hl=cs&z=15&output=embed"
               width="100%" height="100%"
               style={{ border: 0, minHeight: "420px", display: "block" }}
-              allowFullScreen loading="lazy"
+              allowFullScreen 
+              loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               title="Mapa – Rekreační zařízení Březina"
             />

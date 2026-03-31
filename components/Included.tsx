@@ -110,7 +110,7 @@ export default function Included() {
               <p className="text-gray-600 text-sm leading-relaxed">
                 Strava je k dispozici ve variantách{" "}
                 <strong>bezlepková, bezlaktózová, vegetariánská i veganská</strong>{" "}
-                — nutno domluvit předem.
+                — nutno domluvit předem. Za extra příplatek.
               </p>
             </div>
           </motion.div>

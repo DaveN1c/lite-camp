@@ -124,7 +124,7 @@ export default function WhyLiteCamp() {
               </p>
             </div>
             <p className="text-gray-600 leading-relaxed max-w-md" style={{ fontSize: "1.05rem" }}>
-              Spojujeme táborové prázdniny s intenzivní výukou angličtiny, která bude dál bavit a zároveň si užijí léto naplno!
+              Spojujeme táborové prázdniny s intenzivní výukou angličtiny, která bude děti dál bavit a zároveň si užijí léto naplno!
             </p>
           </div>
         </motion.div>

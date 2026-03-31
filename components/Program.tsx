@@ -30,7 +30,7 @@ export default function Program() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="program" className="py-24 md:py-36 bg-[#f0fdf9] relative overflow-hidden">
+    <section id="program" className="py-16 md:py-24 bg-[#f0fdf9] relative overflow-hidden">
       {/* Circle blob decorations */}
       <div className="absolute -top-16 -left-16 w-72 h-72 rounded-full bg-teal-200/30 pointer-events-none" />
       <div className="absolute top-1/3 -right-20 w-80 h-80 rounded-full bg-white/50 pointer-events-none" />
@@ -77,13 +77,24 @@ export default function Program() {
             <span className="w-8 h-px bg-[#14b8a6] inline-block" />
             Program
           </p>
-          <div className="grid lg:grid-cols-2 gap-8 items-end">
+          <div className="grid lg:grid-cols-2 gap-8 items-start">
             <h2 className="text-[#0f172a] leading-tight" style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", fontFamily: "var(--font-fredoka)" }}>
               Jak vypadá typický den? ☀️
             </h2>
-            <p className="text-gray-600 text-base leading-relaxed max-w-md">
-              Každý den je nabitý — ráno angličtina, odpoledne dobrodružství, večer pohádky v angličtině.
-            </p>
+            <div className="space-y-4">
+              <div className="relative rounded-xl overflow-hidden h-44 md:h-52">
+                <Image
+                  src="/fotky/water-fight.jpg"
+                  alt="Děti na LiteCamp táboře"
+                  fill
+                  style={{ objectFit: "cover" }}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              <p className="text-gray-600 text-base leading-relaxed max-w-md">
+                Každý den je nabitý — ráno angličtina, odpoledne dobrodružství, večer pohádky v angličtině.
+              </p>
+            </div>
           </div>
         </div>
 

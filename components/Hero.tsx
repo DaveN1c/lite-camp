@@ -171,16 +171,15 @@ export default function Hero() {
               className="flex gap-3 mb-10"
             >
               <motion.a
-                href="#contact"
-                className="flex-1 sm:flex-none px-6 sm:px-10 py-4 bg-[#fbbf24] text-[#111] font-black uppercase tracking-wider inline-flex items-center justify-center gap-2"
-                style={{ fontSize: "1rem", borderRadius: "12px" }}
-                whileHover={{ scale: 1.05, y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 400, damping: 17 }}
-                animate={{ y: [0, -4, 0] }}
-              >
-                Přihlásit dítě 🎒
-              </motion.a>
+  href="#contact"
+  className="flex-1 sm:flex-none px-6 sm:px-10 py-4 bg-[#fbbf24] text-[#111] font-black uppercase tracking-wider inline-flex items-center justify-center gap-2"
+  style={{ fontSize: "1rem", borderRadius: "12px" }}
+  whileHover={{ scale: 1.05, y: -3 }}
+  whileTap={{ scale: 0.97 }}
+  transition={{ type: "spring", stiffness: 400, damping: 17 }}
+>
+  Přihlásit dítě 🎒
+</motion.a>
               <motion.a
                 href="#pricing"
                 className="flex-1 sm:flex-none px-6 sm:px-10 py-4 border-2 border-[#14b8a6]/40 text-[#14b8a6] font-bold flex items-center justify-center hover:border-[#14b8a6] hover:bg-[#14b8a6]/5 transition-all"
@@ -255,12 +254,12 @@ export default function Hero() {
         <div className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-teal-100">
             {[
-              { label: "Celý tábor (2 týdny)", content: <CountUp to={13000} suffix=" Kč" />, icon: "📅" },
-              { label: "Jeden týden", content: <CountUp to={8900} suffix=" Kč" duration={1600} />, icon: "🏷️" },
-              { label: "Kurz angličtiny v ceně", content: <CountUp to={8000} suffix=" Kč" duration={1500} />, icon: "📚" },
-              { label: "Věk dětí", content: <span>7–17 let</span>, icon: "👦" },
+              { label: "Celý tábor (2 týdny)", content: <CountUp to={13000} suffix=" Kč" />, icon: "📅", bgClass: "bg-emerald-50/60" },
+              { label: "Jeden týden", content: <CountUp to={8900} suffix=" Kč" duration={1600} />, icon: "🏷️", bgClass: "bg-emerald-50/60" },
+              { label: "Kurz angličtiny v ceně", content: <CountUp to={8000} suffix=" Kč" duration={1500} />, icon: "📚", bgClass: "" },
+              { label: "Věk dětí", content: <span>7–17 let</span>, icon: "👦", bgClass: "" },
             ].map((stat) => (
-              <div key={stat.label} className="py-7 px-6 first:pl-0">
+              <div key={stat.label} className={`py-7 px-6 transition-colors duration-300 ${stat.bgClass}`}>
                 <div className="text-2xl mb-2">{stat.icon}</div>
                 <div className="text-[#0f172a] font-black text-xl md:text-2xl mb-1" style={{ fontFamily: "var(--font-fredoka)" }}>
                   {stat.content}

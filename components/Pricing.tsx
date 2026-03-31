@@ -14,7 +14,7 @@ const plans = [
     perks: [
       "Ubytování v chatkách",
       "Strava 5× denně + pitný režim",
-      "Kurz angličtiny",
+      "Kurz angličtiny v hodnotě 4.000 Kč",
       "Táborový program",
       "Úrazové pojištění",
     ],
@@ -29,7 +29,7 @@ const plans = [
     perks: [
       "Ubytování v chatkách",
       "Strava 5× denně + pitný režim",
-      "Kurz angličtiny (2× týden)",
+      "Kurz angličtiny v hodnotě 8.000 Kč",
       "Veškerý táborový program",
       "Úrazové pojištění",
     ],
@@ -43,7 +43,7 @@ const plans = [
     perks: [
       "Ubytování v chatkách",
       "Strava 5× denně + pitný režim",
-      "Kurz angličtiny",
+      "Kurz angličtiny v hodnotě 4.000 Kč",
       "Táborový program",
       "Úrazové pojištění",
     ],
@@ -108,7 +108,7 @@ export default function Pricing() {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="pricing" className="py-24 md:py-36 bg-[#fffbeb] relative overflow-hidden">
+    <section id="pricing" className="py-16 md:py-24 bg-[#fffbeb] relative overflow-hidden">
       {/* Decorative background stars */}
       {[
         { top: "8%", left: "3%", size: 24, delay: 0 },
@@ -165,10 +165,13 @@ export default function Pricing() {
       <svg className="absolute -bottom-20 -left-20 w-80 pointer-events-none select-none" style={{ opacity: 0.05 }} viewBox="0 0 300 300" fill="#fbbf24" xmlns="http://www.w3.org/2000/svg">
         <circle cx="150" cy="150" r="55" />
         {[0,30,60,90,120,150,180,210,240,270,300,330].map((deg) => (
-          <line key={deg} x1="150" y1="150"
-            x2={150 + Math.cos(deg * Math.PI / 180) * 145}
-            y2={150 + Math.sin(deg * Math.PI / 180) * 145}
-            stroke="#fbbf24" strokeWidth="8" strokeLinecap="round" />
+          <line 
+            key={deg} 
+            x1="150" 
+            y1="150"
+            x2={(150 + Math.cos(deg * Math.PI / 180) * 145).toFixed(2)}
+            y2={(150 + Math.sin(deg * Math.PI / 180) * 145).toFixed(2)}
+          />
         ))}
       </svg>
       <div className="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
@@ -183,8 +186,8 @@ export default function Pricing() {
             </h2>
             <p className="text-gray-600 text-base max-w-sm leading-relaxed">
               Kurz angličtiny v hodnotě{" "}
-              <CountUp to={8000} suffix=" Kč" duration={1500} className="text-[#14b8a6] font-bold" /> je součástí
-              každého termínu. Bez příplatků.
+              <CountUp to={8000} suffix=" Kč" duration={1500} className="text-[#14b8a6] font-bold" /> je součást
+              2-týdenního tábora. U táboru na 1 týden to je polovina. Bez příplatků.
             </p>
           </div>
         </div>

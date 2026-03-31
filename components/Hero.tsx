@@ -342,7 +342,7 @@ export default function Hero() {
           {STAT_DATA.map((stat, i) => (
             <motion.div
               key={stat.label}
-              className="bg-white rounded-2xl overflow-hidden"
+              className={`rounded-2xl overflow-hidden ${i < 2 ? "bg-emerald-50" : "bg-white"}`}
               style={{ boxShadow: "0 6px 28px rgba(0,0,0,0.11), 0 1px 4px rgba(0,0,0,0.07)" }}
               initial={{ opacity: 0, y: 22 }}
               animate={{ opacity: 1, y: 0 }}

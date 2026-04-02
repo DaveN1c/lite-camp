@@ -39,25 +39,30 @@ export async function submitRegistration(formData: FormData): Promise<Registrati
     return { success: false, message: "Zadejte prosím platnou emailovou adresu." };
   }
 
-  // Build mailto body for fallback
-  const body = [
-    `Jméno rodiče: ${parentName}`,
-    `Email: ${email}`,
-    `Telefon: ${phone}`,
-    `Jméno dítěte: ${childName}`,
-    `Věk dítěte: ${childAge}`,
-    `Termín: ${TERM_LABELS[term]}`,
-    message ? `Zpráva: ${message}` : null,
-  ]
-    .filter(Boolean)
-    .join("\n");
+  const payload = {
+    access_key: "c09fc25b-a824-4743-8eb3-f083a03b6a9b",
+    subject: `Nová přihláška – LITE camp 2026: ${childName}`,
+    from_name: parentName,
+    email,
+    "Telefon": phone,
+    "Jméno dítěte": childName,
+    "Věk dítěte": childAge,
+    "Termín": TERM_LABELS[term],
+    "Zpráva": message || "–",
+  };
 
-  // In production you would send an email via a service like Resend, SendGrid, etc.
-  // For now we log and return success (fallback: user can also email directly).
-  console.log("New registration:\n", body);
+  const res = await fetch("https://api.web3forms.com/submit", {
+    method: "POST",
+    headers: { "Content-Type": "application/json", Accept: "application/json" },
+    body: JSON.stringify(payload),
+  });
 
-  // Simulate a small delay for UX
-  await new Promise((resolve) => setTimeout(resolve, 800));
+  const json = await res.json();
+
+  if (!res.ok || !json.success) {
+    console.error("Web3Forms error:", json);
+    return { success: false, message: "Nastala chyba při odesílání, zkuste to prosím znovu." };
+  }
 
   return { success: true };
 }

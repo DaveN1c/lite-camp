@@ -2,7 +2,6 @@
 
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { submitRegistration } from "@/app/actions";
 
 const TERMS = [
   { value: "full", label: "Celý tábor – 18. 7. – 1. 8. 2026 (13 000 Kč)" },
@@ -84,17 +83,52 @@ export default function ContactForm() {
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("loading");
-    const data = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    const TERM_LABELS: Record<string, string> = {
+      full: "Celý tábor – 18. 7. – 1. 8. 2026 (13 000 Kč)",
+      week1: "1. týden – 18. 7. – 25. 7. 2026 (8 900 Kč)",
+      week2: "2. týden – 25. 7. – 1. 8. 2026 (8 900 Kč)",
+    };
+
+    const term = data.get("term")?.toString() ?? "";
+    const childAge = data.get("childAge")?.toString() ?? "";
+    const age = parseInt(childAge);
+
+    if (isNaN(age) || age < 7 || age > 17) {
+      setStatus("error");
+      setErrorMsg("Věk dítěte musí být mezi 7 a 17 lety.");
+      return;
+    }
+
     try {
-      const result = await submitRegistration(data);
-      if (result.success) {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: "c09fc25b-a824-4743-8eb3-f083a03b6a9b",
+          subject: `Nová přihláška – LITE camp 2026: ${data.get("childName")}`,
+          from_name: data.get("parentName"),
+          email: data.get("email"),
+          "Telefon": data.get("phone"),
+          "Jméno dítěte": data.get("childName"),
+          "Věk dítěte": childAge,
+          "Termín": TERM_LABELS[term] ?? term,
+          "Zpráva": data.get("message") || "–",
+        }),
+      });
+
+      const json = await res.json();
+
+      if (json.success) {
         setStatus("success");
         setShowConfetti(true);
         setTimeout(() => setShowConfetti(false), 5000);
-        (e.target as HTMLFormElement).reset();
+        form.reset();
       } else {
         setStatus("error");
-        setErrorMsg(result.message || "Nastala chyba, zkuste to prosím znovu.");
+        setErrorMsg("Nastala chyba při odesílání, zkuste to prosím znovu.");
       }
     } catch {
       setStatus("error");

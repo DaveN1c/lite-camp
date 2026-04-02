@@ -18,11 +18,61 @@ const nunito = Nunito({
   variable: "--font-nunito",
 });
 
+const siteName = "LITE camp";
+const siteUrl = "https://www.litecamp.cz";
+const title = "LITE camp 2026 – Letní tábor s angličtinou | Sázava";
+const description =
+  "Letní tábor s intenzivní výukou angličtiny na ostrově na řece Sázavě. 14 dní zážitků, nová přátelství a angličtina přirozenou cestou. Pro děti 7–17 let. Termíny: 18. 7. – 1. 8. 2026.";
+const ogImage = `${siteUrl}/fotky/group-photo.jpg`;
+
 export const metadata: Metadata = {
-  title: "LITE camp 2026 – Letní tábor s angličtinou",
-  description:
-    "Letní tábor s intenzivní výukou angličtiny na ostrově na řece Sázavě. 14 dní zážitků, nová přátelství a anglicky jako se říká přirozenou cestou. Pro děti 7–17 let.",
-  keywords: ["letní tábor", "angličtina", "děti", "LITE camp", "Sázava", "2026"],
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  keywords: [
+    "letní tábor",
+    "letní tábor s angličtinou",
+    "anglický tábor",
+    "dětský tábor",
+    "LITE camp",
+    "tábor Sázava",
+    "tábor 2026",
+    "výuka angličtiny děti",
+    "příměstský tábor",
+  ],
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
+  alternates: {
+    canonical: siteUrl,
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName,
+    title,
+    description,
+    locale: "cs_CZ",
+    images: [
+      {
+        url: ogImage,
+        width: 1200,
+        height: 630,
+        alt: "LITE camp 2026 – děti na letním táboře s angličtinou na Sázavě",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    images: [ogImage],
+  },
 };
 
 export default function RootLayout({

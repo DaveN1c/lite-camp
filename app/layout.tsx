@@ -33,6 +33,13 @@ export default function RootLayout({
   return (
     <html lang="cs" className={`${baloo2.variable} ${nunito.variable} h-full antialiased`}>
       <head>
+        <Script src="https://www.googletagmanager.com/gtag/js?id=G-W617ZJ4EQG" strategy="afterInteractive" />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-W617ZJ4EQG');`}
+        </Script>
         <Script id="meta-pixel" strategy="afterInteractive">
           {`!function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?

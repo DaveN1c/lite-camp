@@ -1,4 +1,10 @@
+"use client";
+
 import Logo from "./Logo";
+
+function trackLead() {
+  if (typeof window !== "undefined") (window as any).fbq?.("track", "Lead");
+}
 
 function PhoneIcon() {
   return (
@@ -43,15 +49,15 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col sm:flex-row md:justify-center gap-2 text-sm text-white/70">
-            <a href="tel:+420774650545" className="hover:text-white transition-colors">
+            <a href="tel:+420774650545" onClick={trackLead} className="hover:text-white transition-colors">
               <PhoneIcon />774 650 545
             </a>
             <span className="hidden sm:inline mx-2 text-white/30">·</span>
-            <a href="tel:+420739611714" className="hover:text-white transition-colors">
+            <a href="tel:+420739611714" onClick={trackLead} className="hover:text-white transition-colors">
               <PhoneIcon />739 611 714
             </a>
             <span className="hidden sm:inline mx-2 text-white/30">·</span>
-            <a href="mailto:hk@lite.cz" className="hover:text-white transition-colors">
+            <a href="mailto:hk@lite.cz" onClick={trackLead} className="hover:text-white transition-colors">
               <MailIcon />hk@lite.cz
             </a>
           </div>

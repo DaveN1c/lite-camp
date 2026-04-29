@@ -122,6 +122,7 @@ export default function ContactForm() {
       const json = await res.json();
 
       if (json.success) {
+        if (typeof window !== "undefined") (window as any).fbq?.("track", "Lead");
         setStatus("success");
         setShowConfetti(true);
         setTimeout(() => setShowConfetti(false), 5000);
@@ -185,6 +186,7 @@ export default function ContactForm() {
                     <a
                       key={c.label}
                       href={c.href}
+                      onClick={() => (window as any).fbq?.("track", "Lead")}
                       className="flex items-center justify-between text-gray-500 hover:text-[#14b8a6] text-sm font-medium transition-colors border-b border-gray-100 pb-3 last:border-0"
                     >
                       <span className="flex items-center gap-2">

@@ -59,6 +59,7 @@ export default function Navbar() {
         <div className="hidden lg:flex items-center gap-5">
           <a
             href="tel:+420774650545"
+            onClick={() => (window as any).fbq?.("track", "Lead")}
             className="flex items-center gap-1.5 text-gray-400 hover:text-[#14b8a6] text-xs transition-colors"
           >
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -78,6 +79,7 @@ export default function Navbar() {
         <div className="lg:hidden flex items-center gap-3">
           <a
             href="tel:+420774650545"
+            onClick={() => (window as any).fbq?.("track", "Lead")}
             className="text-[#14b8a6] p-1"
             aria-label="Zavolat"
           >

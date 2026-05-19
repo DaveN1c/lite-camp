@@ -6,9 +6,9 @@ interface RegistrationResult {
 }
 
 const TERM_LABELS: Record<string, string> = {
-  full: "Celý tábor – 18. 7. – 1. 8. 2026 (13 000 Kč)",
-  week1: "1. týden – 18. 7. – 25. 7. 2026 (8 900 Kč)",
-  week2: "2. týden – 25. 7. – 1. 8. 2026 (8 900 Kč)",
+  full: "Celý tábor – 18. 7. – 1. 8. 2026 (9 990 Kč, sleva z 13 000 Kč)",
+  week1: "1. týden – 18. 7. – 25. 7. 2026 (6 990 Kč, sleva z 8 900 Kč)",
+  week2: "2. týden – 25. 7. – 1. 8. 2026 (6 990 Kč, sleva z 8 900 Kč)",
 };
 
 export async function submitRegistration(formData: FormData): Promise<RegistrationResult> {

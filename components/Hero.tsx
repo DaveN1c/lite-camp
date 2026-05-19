@@ -44,10 +44,10 @@ const FLOATERS = [
 ];
 
 const STAT_DATA = [
-  { label: "Celý tábor (2 týdny)", icon: "📅", accent: "#fbbf24", to: 13000, suffix: " Kč", duration: undefined },
-  { label: "Jeden týden", icon: "🏷️", accent: "#fb923c", to: 8900, suffix: " Kč", duration: 1600 },
-  { label: "Kurz angličtiny v ceně celého tábora", icon: "📚", accent: "#14b8a6", to: 8000, suffix: " Kč", duration: 1500 },
-  { label: "Věk dětí", icon: "👦", accent: "#a78bfa", to: undefined, suffix: undefined, duration: undefined },
+  { label: "Celý tábor (2 týdny)", icon: "📅", accent: "#fbbf24", to: 9990, suffix: " Kč", duration: undefined, oldPrice: 13000 },
+  { label: "Jeden týden", icon: "🏷️", accent: "#fb923c", to: 6990, suffix: " Kč", duration: 1600, oldPrice: 8900 },
+  { label: "Kurz angličtiny v ceně celého tábora", icon: "📚", accent: "#14b8a6", to: 8000, suffix: " Kč", duration: 1500, oldPrice: undefined },
+  { label: "Věk dětí", icon: "👦", accent: "#a78bfa", to: undefined, suffix: undefined, duration: undefined, oldPrice: undefined },
 ];
 
 function SlideProgress({
@@ -108,7 +108,7 @@ export default function Hero() {
   return (
   <>
     <section
-      className="min-h-screen flex flex-col pt-16 relative overflow-hidden"
+      className="min-h-screen flex flex-col pt-[100px] relative overflow-hidden"
       style={{ background: "linear-gradient(175deg, #e0f9f5 0%, #f0fdf9 55%, #fffbeb 100%)" }}
     >
       {/* Background rolling hills silhouette */}
@@ -352,6 +352,11 @@ export default function Hero() {
               <div style={{ height: 5, background: stat.accent }} />
               <div className="px-5 pt-4 pb-5">
                 <div className="text-xl mb-2">{stat.icon}</div>
+                {stat.oldPrice !== undefined && (
+                  <div className="text-gray-400 text-xs font-bold line-through decoration-red-500/80 decoration-2 leading-none mb-0.5 tabular-nums">
+                    {stat.oldPrice.toLocaleString("cs-CZ")} Kč
+                  </div>
+                )}
                 <div
                   className="text-[#0f172a] font-black mb-1"
                   style={{ fontFamily: "var(--font-fredoka)", fontSize: "clamp(1.15rem, 2.2vw, 1.5rem)" }}

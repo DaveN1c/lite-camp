@@ -1,4 +1,5 @@
 import Navbar from "@/components/Navbar";
+import PromoBar from "@/components/PromoBar";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import WhyLiteCamp from "@/components/WhyLiteCamp";
@@ -17,6 +18,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
+      <PromoBar />
       <Navbar />
       <main>
         <Hero />

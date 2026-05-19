@@ -4,9 +4,9 @@ import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 
 const TERMS = [
-  { value: "full", label: "Celý tábor – 18. 7. – 1. 8. 2026 (13 000 Kč)" },
-  { value: "week1", label: "1. týden – 18. 7. – 25. 7. 2026 (8 900 Kč)" },
-  { value: "week2", label: "2. týden – 25. 7. – 1. 8. 2026 (8 900 Kč)" },
+  { value: "full", label: "Celý tábor – 18. 7. – 1. 8. 2026 (9 990 Kč, sleva z 13 000 Kč)" },
+  { value: "week1", label: "1. týden – 18. 7. – 25. 7. 2026 (6 990 Kč, sleva z 8 900 Kč)" },
+  { value: "week2", label: "2. týden – 25. 7. – 1. 8. 2026 (6 990 Kč, sleva z 8 900 Kč)" },
 ];
 
 const inputCls =
@@ -87,9 +87,9 @@ export default function ContactForm() {
     const data = new FormData(form);
 
     const TERM_LABELS: Record<string, string> = {
-      full: "Celý tábor – 18. 7. – 1. 8. 2026 (13 000 Kč)",
-      week1: "1. týden – 18. 7. – 25. 7. 2026 (8 900 Kč)",
-      week2: "2. týden – 25. 7. – 1. 8. 2026 (8 900 Kč)",
+      full: "Celý tábor – 18. 7. – 1. 8. 2026 (9 990 Kč, sleva z 13 000 Kč)",
+      week1: "1. týden – 18. 7. – 25. 7. 2026 (6 990 Kč, sleva z 8 900 Kč)",
+      week2: "2. týden – 25. 7. – 1. 8. 2026 (6 990 Kč, sleva z 8 900 Kč)",
     };
 
     const term = data.get("term")?.toString() ?? "";
@@ -207,16 +207,19 @@ export default function ContactForm() {
                 </p>
                 <div className="space-y-3">
                   {[
-                    { name: "Celý tábor", date: "18. 7. – 1. 8.", price: "13 000 Kč" },
-                    { name: "1. týden", date: "18. 7. – 25. 7.", price: "8 900 Kč" },
-                    { name: "2. týden", date: "25. 7. – 1. 8.", price: "8 900 Kč" },
+                    { name: "Celý tábor", date: "18. 7. – 1. 8.", price: "9 990 Kč", oldPrice: "13 000 Kč" },
+                    { name: "1. týden", date: "18. 7. – 25. 7.", price: "6 990 Kč", oldPrice: "8 900 Kč" },
+                    { name: "2. týden", date: "25. 7. – 1. 8.", price: "6 990 Kč", oldPrice: "8 900 Kč" },
                   ].map((t) => (
                     <div key={t.name} className="flex items-center justify-between border-b border-gray-100 pb-3 last:border-0">
                       <div>
                         <p className="text-gray-700 text-sm font-semibold">{t.name}</p>
                         <p className="text-gray-400 text-xs">{t.date}</p>
                       </div>
-                      <span className="text-[#14b8a6] font-black text-sm">{t.price}</span>
+                      <div className="flex flex-col items-end leading-tight">
+                        <span className="text-gray-400 text-[11px] font-bold line-through decoration-red-500/80 decoration-2 tabular-nums">{t.oldPrice}</span>
+                        <span className="text-[#14b8a6] font-black text-sm tabular-nums">{t.price}</span>
+                      </div>
                     </div>
                   ))}
                 </div>

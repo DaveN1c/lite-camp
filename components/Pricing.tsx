@@ -4,12 +4,24 @@ import { motion, useInView, useMotionValue, useTransform, useSpring } from "fram
 import { useRef } from "react";
 import CountUp from "@/components/CountUp";
 
-const plans = [
+type Plan = {
+  name: string;
+  dates: string;
+  duration: string;
+  price: number;
+  originalPrice: number;
+  highlight: boolean;
+  badge?: string;
+  perks: string[];
+};
+
+const plans: Plan[] = [
   {
     name: "1. týden",
     dates: "18. 7. – 25. 7. 2026",
     duration: "7 dní",
-    price: 8900,
+    price: 6990,
+    originalPrice: 8900,
     highlight: false,
     perks: [
       "Ubytování v chatkách",
@@ -23,7 +35,8 @@ const plans = [
     name: "Celý tábor",
     dates: "18. 7. – 1. 8. 2026",
     duration: "14 dní",
-    price: 13000,
+    price: 9990,
+    originalPrice: 13000,
     highlight: true,
     badge: "Nejoblíbenější",
     perks: [
@@ -38,7 +51,8 @@ const plans = [
     name: "2. týden",
     dates: "25. 7. – 1. 8. 2026",
     duration: "7 dní",
-    price: 8900,
+    price: 6990,
+    originalPrice: 8900,
     highlight: false,
     perks: [
       "Ubytování v chatkách",
@@ -49,6 +63,8 @@ const plans = [
     ],
   },
 ];
+
+const formatPrice = (n: number) => n.toLocaleString("cs-CZ").replace(/ /g, " ");
 
 function CheckMark({ highlight }: { highlight: boolean }) {
   return (
@@ -184,11 +200,16 @@ export default function Pricing() {
             <h2 className="text-[#0f172a] leading-tight" style={{ fontSize: "clamp(2.4rem, 5vw, 4.5rem)", fontFamily: "var(--font-fredoka)" }}>
               Vyberte si termín. 🗓️
             </h2>
-            <p className="text-gray-600 text-base max-w-sm leading-relaxed">
-              Kurz angličtiny v hodnotě{" "}
-              <CountUp to={8000} suffix=" Kč" duration={1500} className="text-[#14b8a6] font-bold" /> je součást
-              2-týdenního tábora. U táboru na 1 týden to je polovina. Bez příplatků.
-            </p>
+            <div className="space-y-3">
+              <span className="inline-flex items-center gap-2 px-3 py-1.5 bg-red-500 text-white text-xs font-black uppercase tracking-wider rounded-full shadow-md shadow-red-200">
+                🔥 Akční sleva — poslední místa
+              </span>
+              <p className="text-gray-600 text-base max-w-sm leading-relaxed">
+                Kurz angličtiny v hodnotě{" "}
+                <CountUp to={8000} suffix=" Kč" duration={1500} className="text-[#14b8a6] font-bold" /> je součást
+                2-týdenního tábora. U táboru na 1 týden to je polovina. Bez příplatků.
+              </p>
+            </div>
           </div>
         </div>
 
@@ -208,8 +229,8 @@ export default function Pricing() {
                     : "bg-white border border-amber-100 shadow-sm hover:shadow-md transition-shadow"
                 }`}
               >
-                {plan.badge && (
-                  <div className="absolute top-5 right-5">
+                <div className="absolute top-5 right-5 flex flex-col items-end gap-2 z-10">
+                  {plan.badge && (
                     <motion.span
                       className="px-3 py-1 bg-[#fbbf24] text-[#111] text-[10px] font-black uppercase tracking-wider rounded-sm inline-block"
                       animate={{ rotate: [0, -2, 2, -1, 0] }}
@@ -217,8 +238,15 @@ export default function Pricing() {
                     >
                       {plan.badge}
                     </motion.span>
-                  </div>
-                )}
+                  )}
+                  <motion.span
+                    className="px-3 py-1 bg-red-500 text-white text-[10px] font-black uppercase tracking-wider rounded-sm inline-block shadow-md shadow-red-200"
+                    animate={{ scale: [1, 1.08, 1] }}
+                    transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+                  >
+                    −{Math.round((1 - plan.price / plan.originalPrice) * 100)}% Sleva
+                  </motion.span>
+                </div>
 
                 <div className="p-8 md:p-10 flex-1">
                   <p className={`text-xs font-bold uppercase tracking-widest mb-2 ${plan.highlight ? "text-white/75" : "text-[#14b8a6]"}`}>
@@ -232,18 +260,28 @@ export default function Pricing() {
                   </p>
 
                   <div
-                    className="mb-10 flex items-end gap-1.5 pb-8 border-b border-dashed"
+                    className="mb-10 pb-8 border-b border-dashed"
                     style={{ borderColor: plan.highlight ? "rgba(255,255,255,0.2)" : "#fde68a" }}
                   >
-                    <span
-                      className={`font-black leading-none tabular-nums ${plan.highlight ? "text-white" : "text-[#0f172a]"}`}
-                      style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}
-                    >
-                      <CountUp to={plan.price} duration={1600} />
-                    </span>
-                    <span className={`text-sm mb-1.5 font-bold ${plan.highlight ? "text-white/75" : "text-gray-500"}`}>
-                      Kč
-                    </span>
+                    <div className={`flex items-baseline gap-2 mb-1 ${plan.highlight ? "text-white/55" : "text-gray-400"}`}>
+                      <span className="text-base font-bold line-through tabular-nums decoration-2 decoration-red-500/80">
+                        {formatPrice(plan.originalPrice)} Kč
+                      </span>
+                      <span className={`text-[10px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded ${plan.highlight ? "bg-white/15 text-white" : "bg-red-50 text-red-600"}`}>
+                        Ušetříte {formatPrice(plan.originalPrice - plan.price)} Kč
+                      </span>
+                    </div>
+                    <div className="flex items-end gap-1.5">
+                      <span
+                        className={`font-black leading-none tabular-nums ${plan.highlight ? "text-white" : "text-[#0f172a]"}`}
+                        style={{ fontSize: "clamp(2.5rem, 5vw, 3.5rem)" }}
+                      >
+                        <CountUp to={plan.price} duration={1600} />
+                      </span>
+                      <span className={`text-sm mb-1.5 font-bold ${plan.highlight ? "text-white/75" : "text-gray-500"}`}>
+                        Kč
+                      </span>
+                    </div>
                   </div>
 
                   <ul className="space-y-3">

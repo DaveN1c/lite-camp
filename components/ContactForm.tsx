@@ -92,8 +92,14 @@ export default function ContactForm() {
       week2: "2. týden – 25. 7. – 1. 8. 2026 (6 990 Kč, sleva z 8 900 Kč)",
     };
 
-    const term = data.get("term")?.toString() ?? "";
-    const childAge = data.get("childAge")?.toString() ?? "";
+    const trim = (v: FormDataEntryValue | null) => (v?.toString() ?? "").trim();
+    const parentName = trim(data.get("parentName"));
+    const email = trim(data.get("email"));
+    const phone = trim(data.get("phone"));
+    const childName = trim(data.get("childName"));
+    const childAge = trim(data.get("childAge"));
+    const term = trim(data.get("term"));
+    const message = trim(data.get("message"));
     const age = parseInt(childAge);
 
     if (isNaN(age) || age < 7 || age > 17) {
@@ -108,20 +114,25 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           access_key: "c09fc25b-a824-4743-8eb3-f083a03b6a9b",
-          subject: `Nová přihláška – LITE camp 2026: ${data.get("childName")}`,
-          from_name: data.get("parentName"),
-          email: data.get("email"),
-          "Telefon": data.get("phone"),
-          "Jméno dítěte": data.get("childName"),
-          "Věk dítěte": childAge,
-          "Termín": TERM_LABELS[term] ?? term,
-          "Zpráva": data.get("message") || "–",
+          subject: `Nová přihláška – LITE camp 2026: ${childName || parentName || "bez jména"}`,
+          from_name: parentName || "LITE camp – přihláška",
+          email,
+          phone,
+          child_name: childName,
+          child_age: childAge,
+          term: TERM_LABELS[term] ?? term,
+          message_text: message || "–",
         }),
       });
 
-      const json = await res.json();
+      let json: { success?: boolean; message?: string } = {};
+      try {
+        json = await res.json();
+      } catch {
+        /* non-JSON response — fall through */
+      }
 
-      if (json.success) {
+      if (res.ok && json.success) {
         if (typeof window !== "undefined") (window as any).fbq?.("track", "Lead");
         setStatus("success");
         setShowConfetti(true);
@@ -129,11 +140,16 @@ export default function ContactForm() {
         form.reset();
       } else {
         setStatus("error");
-        setErrorMsg("Nastala chyba při odesílání, zkuste to prosím znovu.");
+        const detail = json.message ? ` (${json.message})` : "";
+        setErrorMsg(`Nastala chyba při odesílání, zkuste to prosím znovu.${detail}`);
+        if (typeof console !== "undefined") {
+          console.error("web3forms submit failed", res.status, json);
+        }
       }
-    } catch {
+    } catch (err) {
       setStatus("error");
       setErrorMsg("Nastala chyba, zkuste to prosím znovu.");
+      if (typeof console !== "undefined") console.error("web3forms submit threw", err);
     }
   }
 
